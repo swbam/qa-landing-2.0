@@ -9,7 +9,8 @@ export default {
   entry: './src/webflow-index.tsx',
   output: {
     filename: 'quickauction-search.js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, 'dist'),
+    assetModuleFilename: 'assets/[name][ext]'
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.js']
@@ -39,6 +40,10 @@ export default {
           'css-loader',
           'postcss-loader'
         ]
+      },
+      {
+        test: /\.(png|jpg|jpeg|gif|svg)$/i,
+        type: 'asset/resource'
       }
     ]
   },
