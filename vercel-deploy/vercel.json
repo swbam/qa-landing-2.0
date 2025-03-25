@@ -1,7 +1,7 @@
 {
   "version": 2,
   "public": true,
-  "buildCommand": null,
+  "buildCommand": "webpack --mode production && cp dist/quickauction-search.js dist/quickauction-search.css public/",
   "outputDirectory": "public",
   "headers": [
     {

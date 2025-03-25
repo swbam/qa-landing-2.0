@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How to Embed QuickAuction Component</title>
+  
+  <!-- START: Required React imports -->
+  <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
+  <!-- END: Required React imports -->
+
+  <!-- START: CSS Variables for component styling -->
+  <style>
+  :root {
+    --primary: #0054da;
+    --primary-dark: #0049bb;
+  }
+  </style>
+  <!-- END: CSS Variables -->
+
+  <!-- START: Component CSS -->
+  <link rel="stylesheet" href="/quickauction-search.css">
+  <!-- END: Component CSS -->
+  
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f0f2f5;
+      color: #333;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+    h1, h2 {
+      margin-bottom: 30px;
+      color: #333;
+    }
+    .instructions {
+      background-color: #f8f9fa;
+      border-left: 4px solid #0054da;
+      padding: 20px;
+      margin-bottom: 40px;
+    }
+    pre {
+      background-color: #f1f1f1;
+      padding: 15px;
+      border-radius: 4px;
+      overflow-x: auto;
+    }
+    .demo-section {
+      background-color: white;
+      border-radius: 8px;
+      padding: 30px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      margin-bottom: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>How to Embed the QuickAuction Component</h1>
+    
+    <div class="instructions">
+      <h2>Integration Instructions</h2>
+      <p>Follow these steps to add the QuickAuction component to your existing Webflow site:</p>
+      
+      <h3>1. Add these tags to your site's &lt;head&gt; section:</h3>
+      <pre>&lt;!-- React and ReactDOM --&gt;
+&lt;script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"&gt;&lt;/script&gt;
+&lt;script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"&gt;&lt;/script&gt;
+
+&lt;!-- CSS Variables --&gt;
+&lt;style&gt;
+:root {
+  --primary: #0054da;
+  --primary-dark: #0049bb;
+}
+&lt;/style&gt;
+
+&lt;!-- Component CSS --&gt;
+&lt;link rel="stylesheet" href="https://qa-landing-2.vercel.app/quickauction-search.css"&gt;</pre>
+
+      <h3>2. Add this div where you want the component to appear:</h3>
+      <pre>&lt;div class="quickauction-search-component" data-primary-color="#0054da" data-primary-dark-color="#0049bb"&gt;&lt;/div&gt;</pre>
+
+      <h3>3. Add this script just before the closing &lt;/body&gt; tag:</h3>
+      <pre>&lt;script src="https://qa-landing-2.vercel.app/quickauction-search.js"&gt;&lt;/script&gt;</pre>
+    </div>
+    
+    <h2>Component Demo</h2>
+    <p>This is how the component will look when embedded in your site:</p>
+    
+    <div class="demo-section">
+      <!-- START: The actual component embedded here -->
+      <div class="quickauction-search-component" data-primary-color="#0054da" data-primary-dark-color="#0049bb"></div>
+      <!-- END: The actual component -->
+    </div>
+    
+    <p>Note: Your existing website content will remain unchanged - the QuickAuction component will only appear where you place the specific div.</p>
+  </div>
+
+  <!-- START: Component JS -->
+  <script src="/quickauction-search.js"></script>
+  <!-- END: Component JS -->
+</body>
+</html> 
