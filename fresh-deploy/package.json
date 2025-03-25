@@ -1,0 +1,9 @@
+{
+  "name": "quickauction-component-host",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static hosting for QuickAuction component",
+  "scripts": {
+    "build": "echo 'No build step required'"
+  }
+} 
