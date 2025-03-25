@@ -1,0 +1,10 @@
+{
+  "name": "quickauction-webflow-component",
+  "version": "1.0.0",
+  "description": "QuickAuction search component for Webflow",
+  "scripts": {
+    "build": "echo 'Nothing to build'"
+  },
+  "author": "",
+  "license": "MIT"
+} 
