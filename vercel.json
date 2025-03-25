@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "public": true,
+  "buildCommand": null,
+  "outputDirectory": "public",
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "routes": [
+    { "src": "/quickauction-search.js", "dest": "/quickauction-search.js" },
+    { "src": "/quickauction-search.css", "dest": "/quickauction-search.css" }
+  ]
+} 

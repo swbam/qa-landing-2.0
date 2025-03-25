@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QuickAuction Files for Manual Upload</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.6;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    h1 {
+      border-bottom: 1px solid #eee;
+      padding-bottom: 10px;
+    }
+    .file-card {
+      margin: 20px 0;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+    .file-name {
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    textarea {
+      width: 100%;
+      height: 200px;
+      font-family: monospace;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 3px;
+    }
+    button {
+      background: #0054da;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #0049bb;
+    }
+    p {
+      margin: 15px 0;
+    }
+    .instructions {
+      background: #f8f9fa;
+      padding: 15px;
+      border-left: 3px solid #0054da;
+    }
+  </style>
+</head>
+<body>
+  <h1>QuickAuction Files for Manual Upload</h1>
+  
+  <div class="instructions">
+    <p>Since Vercel deployment is having issues, here's a manual approach to get your component working:</p>
+    <ol>
+      <li>Download the files below by copying their content</li>
+      <li>Upload them to your Webflow Assets</li>
+      <li>Use the Webflow asset URLs in your code</li>
+    </ol>
+  </div>
+  
+  <div class="file-card">
+    <div class="file-name">quickauction-search.js</div>
+    <p>Copy this JavaScript file content and save it as "quickauction-search.js":</p>
+    <textarea id="js-content"></textarea>
+    <p><button onclick="copyToClipboard('js-content')">Copy JavaScript</button></p>
+  </div>
+  
+  <div class="file-card">
+    <div class="file-name">quickauction-search.css</div>
+    <p>Copy this CSS file content and save it as "quickauction-search.css":</p>
+    <textarea id="css-content"></textarea>
+    <p><button onclick="copyToClipboard('css-content')">Copy CSS</button></p>
+  </div>
+  
+  <div class="file-card">
+    <div class="file-name">Webflow Integration Code</div>
+    <p>After uploading both files to Webflow Assets, use this code in Webflow with your asset URLs:</p>
+    <textarea id="integration-code">
+<!-- In the HEAD section of your Webflow site -->
+<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
+
+<style>
+:root {
+  --primary: #0054da;
+  --primary-dark: #0049bb;
+}
+</style>
+
+<!-- Replace with your Webflow asset URL -->
+<link rel="stylesheet" href="YOUR_WEBFLOW_ASSET_URL_FOR_CSS">
+
+<!-- Where you want the component to appear -->
+<div class="quickauction-search-component" data-primary-color="#0054da" data-primary-dark-color="#0049bb"></div>
+
+<!-- Replace with your Webflow asset URL -->
+<script src="YOUR_WEBFLOW_ASSET_URL_FOR_JS"></script>
+</textarea>
+    <p><button onclick="copyToClipboard('integration-code')">Copy Integration Code</button></p>
+  </div>
+  
+  <script>
+    // Load file contents
+    fetch('quickauction-search.js')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('js-content').value = data;
+      });
+    
+    fetch('quickauction-search.css')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('css-content').value = data;
+      });
+    
+    function copyToClipboard(id) {
+      const textarea = document.getElementById(id);
+      textarea.select();
+      document.execCommand('copy');
+    }
+  </script>
+</body>
+</html> 

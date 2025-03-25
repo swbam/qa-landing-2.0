@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QuickAuction Component Files</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 40px 20px;
+      line-height: 1.6;
+    }
+    h1 {
+      border-bottom: 1px solid #eee;
+      padding-bottom: 10px;
+    }
+    pre {
+      background: #f6f8fa;
+      padding: 16px;
+      border-radius: 6px;
+      overflow-x: auto;
+    }
+    code {
+      font-family: monospace;
+    }
+    .file-list {
+      margin: 30px 0;
+    }
+    .file {
+      display: flex;
+      padding: 10px;
+      border-bottom: 1px solid #eee;
+    }
+    .file-name {
+      flex: 1;
+      font-weight: bold;
+    }
+    .file-link a {
+      color: #0054da;
+      text-decoration: none;
+    }
+    .file-link a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <h1>QuickAuction Component Files</h1>
+  
+  <p>These component files are hosted on Vercel and can be embedded in your website. <strong>They are not meant to be viewed directly</strong>.</p>
+  
+  <div class="file-list">
+    <div class="file">
+      <div class="file-name">quickauction-search.js</div>
+      <div class="file-link"><a href="/quickauction-search.js">View File</a></div>
+    </div>
+    <div class="file">
+      <div class="file-name">quickauction-search.css</div>
+      <div class="file-link"><a href="/quickauction-search.css">View File</a></div>
+    </div>
+  </div>
+  
+  <h2>How to Use</h2>
+  
+  <p>Add the following code to your website to embed the QuickAuction component:</p>
+  
+  <h3>In the &lt;head&gt; section:</h3>
+  <pre><code>&lt;!-- React and ReactDOM --&gt;
+&lt;script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"&gt;&lt;/script&gt;
+&lt;script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"&gt;&lt;/script&gt;
+
+&lt;!-- CSS Variables --&gt;
+&lt;style&gt;
+:root {
+  --primary: #0054da;
+  --primary-dark: #0049bb;
+}
+&lt;/style&gt;
+
+&lt;!-- Component CSS --&gt;
+&lt;link rel="stylesheet" href="https://qa-component.vercel.app/quickauction-search.css"&gt;</code></pre>
+  
+  <h3>Where you want the component to appear:</h3>
+  <pre><code>&lt;div class="quickauction-search-component" data-primary-color="#0054da" data-primary-dark-color="#0049bb"&gt;&lt;/div&gt;</code></pre>
+  
+  <h3>Before the closing &lt;/body&gt; tag:</h3>
+  <pre><code>&lt;script src="https://qa-component.vercel.app/quickauction-search.js"&gt;&lt;/script&gt;</code></pre>
+  
+  <p><em>Note: Replace "qa-component.vercel.app" with your actual Vercel deployment URL.</em></p>
+</body>
+</html> 
