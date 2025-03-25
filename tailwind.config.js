@@ -1,14 +1,14 @@
 /** @type {import('tailwindcss').Config} */
-export default {
-  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+module.exports = {
+  content: ['./src/webflow-embed.js'],
   theme: {
     extend: {
-      fontFamily: {
-        sans: ['Overpass', 'sans-serif'],
-      },
       colors: {
         'primary': '#0054da',
         'primary-dark': '#0049bb',
+      },
+      fontFamily: {
+        'sans': ['Overpass', 'sans-serif'],
       },
     },
   },
