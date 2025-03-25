@@ -34,7 +34,7 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
     { name: 'Watercraft', icon: Sailboat, categories: boatCategories, emoji: '⛵' },
     { name: 'Equipment', icon: Tractor, categories: equipmentCategories, emoji: '🚜' },
     { name: 'Miscellaneous', icon: Package, categories: miscCategories, emoji: '📦' }
-  ];
+  ]; 
 
   // Dynamic styles to use custom colors
   const styles = {
