@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Search, Car, Bike, Sailboat, Package, Tractor } from 'lucide-react';
 
 interface SearchComponentProps {
@@ -15,26 +15,54 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
   const [selectedMake, setSelectedMake] = useState('All makes');
   const [selectedPrice, setSelectedPrice] = useState('Any Price');
   const [selectedCategory, setSelectedCategory] = useState('All Categories');
+  const [selectedSubCategory, setSelectedSubCategory] = useState('');
   const [buyShowCategories, setBuyShowCategories] = useState(true);
+  const [availableMakes, setAvailableMakes] = useState<string[]>([]);
 
-  // Define your data arrays
-  const makes = ['All makes', 'Toyota', 'Honda', 'Ford', 'Chevrolet', 'BMW', 'Mercedes-Benz', 'Audi', 'Lexus'];
-  const vehicleCategories = ['All Categories', 'Automobile', 'Motorcycle', 'Watercraft', 'Equipment', 'Miscellaneous'];
+  // Define category data structure
+  const vehicleCategories = ['All Categories', 'Automobile', 'Motorcycle', 'Watercraft', 'Heavy Equipment', 'Miscellaneous'];
 
-  // Categories for the seller tab
+  // Define make lists for each category
+  const automobileMakes = ['All makes', 'Toyota', 'Honda', 'Ford', 'Chevrolet', 'BMW', 'Mercedes-Benz', 'Audi', 'Lexus'];
+  const motorcycleMakes = ['All makes', 'Harley-Davidson', 'Honda', 'Yamaha', 'Kawasaki', 'Suzuki', 'Ducati', 'BMW', 'Triumph'];
+  const boatMakes = ['All makes', 'Sea Ray', 'Bayliner', 'Boston Whaler', 'Chaparral', 'MasterCraft', 'Yamaha', 'Grady-White', 'Bennington'];
+  const heavyEquipmentMakes = ['All makes', 'Caterpillar', 'John Deere', 'Komatsu', 'Bobcat', 'Case', 'Kubota', 'Volvo', 'Hitachi'];
+  const miscMakes = ['All makes', 'Various', 'Custom', 'Generic', 'Aftermarket'];
+
+  // Categories for each vehicle type
   const automobileCategories = ['Car', 'Truck', 'SUV', 'Van', 'Other'];
   const motorcycleCategories = ['Sport', 'Cruiser', 'Touring', 'Off-Road', 'Scooter', 'Other'];
   const boatCategories = ['Power Boat', 'Sailboat', 'Fishing Boat', 'Yacht', 'Pontoon', 'Other'];
-  const equipmentCategories = ['Excavator', 'Bulldozer', 'Loader', 'Vibratory Roller', 'Crane', 'Tractor', 'Other'];
+  const heavyEquipmentCategories = ['Excavator', 'Bulldozer', 'Loader', 'Vibratory Roller', 'Crane', 'Tractor', 'Other'];
   const miscCategories = ['Parts', 'Accessories', 'Other'];
 
   const categories = [
-    { name: 'Automobile', icon: Car, categories: automobileCategories, emoji: '🚗' },
-    { name: 'Motorcycle', icon: Bike, categories: motorcycleCategories, emoji: '🏍️' },
-    { name: 'Watercraft', icon: Sailboat, categories: boatCategories, emoji: '⛵' },
-    { name: 'Equipment', icon: Tractor, categories: equipmentCategories, emoji: '🚜' },
-    { name: 'Miscellaneous', icon: Package, categories: miscCategories, emoji: '📦' }
-  ]; 
+    { name: 'Automobile', icon: Car, categories: automobileCategories, emoji: '🚗', makes: automobileMakes },
+    { name: 'Motorcycle', icon: Bike, categories: motorcycleCategories, emoji: '🏍️', makes: motorcycleMakes },
+    { name: 'Watercraft', icon: Sailboat, categories: boatCategories, emoji: '⛵', makes: boatMakes },
+    { name: 'Heavy Equipment', icon: Tractor, categories: heavyEquipmentCategories, emoji: '🚜', makes: heavyEquipmentMakes },
+    { name: 'Miscellaneous', icon: Package, categories: miscCategories, emoji: '📦', makes: miscMakes }
+  ];
+
+  // Get subcategories based on selected main category
+  const getSubCategories = () => {
+    const category = categories.find(c => c.name === selectedCategory);
+    return category ? category.categories : [];
+  };
+
+  // Update makes when category changes
+  useEffect(() => {
+    if (selectedCategory === 'All Categories') {
+      setAvailableMakes(['All makes']);
+      return;
+    }
+    
+    const category = categories.find(c => c.name === selectedCategory);
+    if (category) {
+      setAvailableMakes(category.makes);
+      setSelectedMake('All makes');
+    }
+  }, [selectedCategory]);
 
   // Dynamic styles to use custom colors
   const styles = {
@@ -110,10 +138,24 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
                   <div>
                     <select 
                       className="w-full px-4 py-3 border border-gray-200 rounded-[3px] focus:outline-none focus:border-primary bg-white"
+                      value={selectedSubCategory}
+                      onChange={(event) => setSelectedSubCategory(event.target.value)}
+                      disabled={selectedCategory === 'All Categories'}
+                    >
+                      <option value="">All Types</option>
+                      {getSubCategories().map(subcategory => (
+                        <option key={subcategory} value={subcategory}>{subcategory}</option>
+                      ))}
+                    </select>
+                  </div>
+                  <div>
+                    <select 
+                      className="w-full px-4 py-3 border border-gray-200 rounded-[3px] focus:outline-none focus:border-primary bg-white"
                       value={selectedMake}
                       onChange={(event) => setSelectedMake(event.target.value)}
+                      disabled={selectedCategory === 'All Categories'}
                     >
-                      {makes.map(make => (
+                      {availableMakes.map(make => (
                         <option key={make}>{make}</option>
                       ))}
                     </select>
@@ -129,10 +171,12 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
                       ))}
                     </select>
                   </div>
-                  <div>
+                  <div className="lg:col-span-4">
                     <button 
                       className="w-full bg-primary text-white px-6 py-3 rounded-[3px] hover:bg-primary-dark flex items-center justify-center"
                       style={{ backgroundColor: styles.primary }}
+                      onMouseOver={(e) => e.currentTarget.style.backgroundColor = styles.primaryDark}
+                      onMouseOut={(e) => e.currentTarget.style.backgroundColor = styles.primary}
                     >
                       <Search className="w-5 h-5 mr-2" />
                       Search
@@ -158,6 +202,10 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
                   <div
                     key={category.name}
                     className="bg-white border border-gray-200 rounded-[3px] shadow-sm hover:shadow-md transition-shadow text-center p-6 cursor-pointer hover:border-primary"
+                    onClick={() => {
+                      setSelectedCategory(category.name);
+                      // Handle sell/trade flow
+                    }}
                   >
                     <div className="text-4xl mb-4">{category.emoji}</div>
                     <h3 className="font-medium">{category.name}</h3>

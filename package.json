@@ -9,7 +9,7 @@
     "build:webflow": "webpack --mode production",
     "lint": "eslint .",
     "preview": "vite preview",
-    "deploy": "cp ./dist/quickauction-search.js ./dist/quickauction-search.css ./static-only/",
+    "deploy": "npm run build && npm run build:webflow && vercel --prod",
     "bd": "npm run build:webflow && npm run deploy"
   },
   "dependencies": {
