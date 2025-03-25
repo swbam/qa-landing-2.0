@@ -18,6 +18,7 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
   const [selectedSubCategory, setSelectedSubCategory] = useState('');
   const [buyShowCategories, setBuyShowCategories] = useState(true);
   const [availableMakes, setAvailableMakes] = useState<string[]>([]);
+  const [showAdvancedFilters, setShowAdvancedFilters] = useState(true);
 
   // Define category data structure
   const vehicleCategories = ['All Categories', 'Automobile', 'Motorcycle', 'Watercraft', 'Heavy Equipment', 'Miscellaneous'];
@@ -128,8 +129,6 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
                     <div>
                       <select 
                         className="w-full px-4 py-3 border border-gray-200 rounded-[3px] focus:outline-none focus:border-primary bg-white"
-                        value={selectedCategory}
-                        onChange={(event) => setSelectedCategory(event.target.value)}
                       >
                         <option>Start Year</option>
                         {Array.from({ length: 44 }, (_, i) => 2024 - i).map(year => (
@@ -140,8 +139,6 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
                     <div>
                       <select 
                         className="w-full px-4 py-3 border border-gray-200 rounded-[3px] focus:outline-none focus:border-primary bg-white"
-                        value={selectedSubCategory}
-                        onChange={(event) => setSelectedSubCategory(event.target.value)}
                       >
                         <option>End Year</option>
                         {Array.from({ length: 44 }, (_, i) => 2024 - i).map(year => (
@@ -186,74 +183,81 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
                   </div>
                   
                   <div className="mb-6">
-                    <div className="flex items-center justify-between mb-2">
+                    <div 
+                      className="flex items-center justify-between mb-2 cursor-pointer" 
+                      onClick={() => setShowAdvancedFilters(!showAdvancedFilters)}
+                    >
                       <h3 className="font-bold text-lg">Advanced Filters <span className="bg-primary text-white rounded-full px-2 py-0.5 text-xs" style={{ backgroundColor: styles.primary }}>2</span></h3>
                       <button className="text-gray-500">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                          <polyline points="18 15 12 9 6 15"></polyline>
+                          <polyline points={showAdvancedFilters ? "6 9 12 15 18 9" : "18 15 12 9 6 15"}></polyline>
                         </svg>
                       </button>
                     </div>
                     
-                    <div className="mb-6">
-                      <h4 className="font-medium mb-2">Mileage</h4>
-                      <div className="flex items-center">
-                        <span className="pr-4">0 mi</span>
-                        <div className="relative flex-grow h-2 bg-gray-200 rounded-full">
-                          <div className="absolute h-2 bg-primary rounded-full" style={{ width: '60%', backgroundColor: styles.primary }}></div>
-                          <div className="absolute h-4 w-4 bg-white border border-primary rounded-full -mt-1 -ml-2" style={{ left: '60%', borderColor: styles.primary }}></div>
+                    {showAdvancedFilters && (
+                      <>
+                        <div className="mb-6">
+                          <h4 className="font-medium mb-2">Mileage</h4>
+                          <div className="flex items-center">
+                            <span className="pr-4">0 mi</span>
+                            <div className="relative flex-grow h-2 bg-gray-200 rounded-full">
+                              <div className="absolute h-2 bg-primary rounded-full" style={{ width: '60%', backgroundColor: styles.primary }}></div>
+                              <div className="absolute h-4 w-4 bg-white border border-primary rounded-full -mt-1 -ml-2" style={{ left: '60%', borderColor: styles.primary }}></div>
+                            </div>
+                            <span className="pl-4">200,000 mi</span>
+                          </div>
                         </div>
-                        <span className="pl-4">200,000 mi</span>
-                      </div>
-                    </div>
-                    
-                    <div className="mb-6">
-                      <h4 className="font-medium mb-2">Current High Bid Range</h4>
-                      <div className="flex items-center">
-                        <span className="pr-4">$0.00</span>
-                        <div className="relative flex-grow h-2 bg-gray-200 rounded-full">
-                          <div className="absolute h-2 bg-primary rounded-full" style={{ width: '40%', backgroundColor: styles.primary }}></div>
-                          <div className="absolute h-4 w-4 bg-white border border-primary rounded-full -mt-1 -ml-2" style={{ left: '40%', borderColor: styles.primary }}></div>
+                        
+                        <div className="mb-6">
+                          <h4 className="font-medium mb-2">Current High Bid Range</h4>
+                          <div className="flex items-center">
+                            <span className="pr-4">$0.00</span>
+                            <div className="relative flex-grow h-2 bg-gray-200 rounded-full">
+                              <div className="absolute h-2 bg-primary rounded-full" style={{ width: '40%', backgroundColor: styles.primary }}></div>
+                              <div className="absolute h-4 w-4 bg-white border border-primary rounded-full -mt-1 -ml-2" style={{ left: '40%', borderColor: styles.primary }}></div>
+                            </div>
+                            <span className="pl-4">$50,000.00</span>
+                          </div>
                         </div>
-                        <span className="pl-4">$50,000.00</span>
-                      </div>
-                    </div>
-                    
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-                      <div>
-                        <h4 className="font-medium mb-2">Vehicle Color</h4>
-                        <select className="w-full px-4 py-3 border border-gray-200 rounded-[3px] focus:outline-none focus:border-primary bg-white">
-                          <option>Any Color</option>
-                          <option>Black</option>
-                          <option>White</option>
-                          <option>Gray</option>
-                          <option>Silver</option>
-                          <option>Blue</option>
-                          <option>Red</option>
-                          <option>Green</option>
-                          <option>Yellow</option>
-                          <option>Orange</option>
-                          <option>Brown</option>
-                          <option>Purple</option>
-                        </select>
-                      </div>
-                      <div>
-                        <h4 className="font-medium mb-2">Transmission Type</h4>
-                        <select className="w-full px-4 py-3 border border-gray-200 rounded-[3px] focus:outline-none focus:border-primary bg-white">
-                          <option>Any Transmission</option>
-                          <option>Automatic</option>
-                          <option>Manual</option>
-                          <option>CVT</option>
-                          <option>Semi-automatic</option>
-                        </select>
-                      </div>
-                    </div>
-                    
-                    <div className="flex justify-end">
-                      <button className="text-primary font-medium" style={{ color: styles.primary }}>
-                        Reset Filters
-                      </button>
-                    </div>
+                        
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                          <div>
+                            <h4 className="font-medium mb-2">Vehicle Color</h4>
+                            <select className="w-full px-4 py-3 border border-gray-200 rounded-[3px] focus:outline-none focus:border-primary bg-white">
+                              <option>Any Color</option>
+                              <option>Black</option>
+                              <option>White</option>
+                              <option>Gray</option>
+                              <option>Silver</option>
+                              <option>Blue</option>
+                              <option>Red</option>
+                              <option>Green</option>
+                              <option>Yellow</option>
+                              <option>Orange</option>
+                              <option>Brown</option>
+                              <option>Purple</option>
+                            </select>
+                          </div>
+                          <div>
+                            <h4 className="font-medium mb-2">Transmission Type</h4>
+                            <select className="w-full px-4 py-3 border border-gray-200 rounded-[3px] focus:outline-none focus:border-primary bg-white">
+                              <option>Any Transmission</option>
+                              <option>Automatic</option>
+                              <option>Manual</option>
+                              <option>CVT</option>
+                              <option>Semi-automatic</option>
+                            </select>
+                          </div>
+                        </div>
+                        
+                        <div className="flex justify-end">
+                          <button className="text-primary font-medium" style={{ color: styles.primary }}>
+                            Reset Filters
+                          </button>
+                        </div>
+                      </>
+                    )}
                   </div>
                   
                   <div>
