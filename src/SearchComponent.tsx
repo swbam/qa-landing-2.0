@@ -232,26 +232,7 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
               {selectedCategory && (
                 <div className="mt-8">
                   <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                    <div>
-                      <select 
-                        className="w-full px-4 py-3 border border-gray-200 rounded-[3px] focus:outline-none focus:border-primary bg-white"
-                        value={selectedMake}
-                        onChange={(event) => setSelectedMake(event.target.value)}
-                      >
-                        <option>All makes</option>
-                        {availableMakes.slice(1).map(make => (
-                          <option key={make}>{make}</option>
-                        ))}
-                      </select>
-                    </div>
-                    <div>
-                      <select 
-                        className="w-full px-4 py-3 border border-gray-200 rounded-[3px] focus:outline-none focus:border-primary bg-white"
-                      >
-                        <option>All models</option>
-                        {/* Models would be populated based on make */}
-                      </select>
-                    </div>
+                   
                     <div className="col-span-2">
                       <button 
                         className="w-full bg-primary text-white px-6 py-3 rounded-[3px] hover:bg-primary-dark flex items-center justify-center"
