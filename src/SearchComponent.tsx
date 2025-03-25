@@ -75,8 +75,8 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
       {/* Blue hero section */}
       <div className="w-full bg-primary py-16" style={{ backgroundColor: styles.primary }}>
         <div className="max-w-5xl mx-auto px-4 text-center text-white">
-          <h1 className="text-5xl font-bold mb-5">Car shopping your way</h1>
-          <p className="text-xl">List your vehicle today and watch as buyers compete with bids to give you the best market value.</p>
+          <h1 className="text-5xl font-bold mb-5">Quick Listing. Competitive Bidding. Fast Results.</h1>
+          <p className="text-xl">From cars to watercraft, motorcycles to miscellaneous items—connect with motivated buyers and sellers for competitive bidding in minutes.</p>
         </div>
       </div>
       
@@ -105,7 +105,7 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
             <>
               {buyShowCategories ? (
                 <div>
-                  <h2 className="text-2xl font-bold mb-8">What are you looking for? <span className="text-red-500">*</span></h2>
+                  <h2 className="text-2xl font-bold mb-8">What are you looking for?</h2>
                   <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
                     {categories.map((category) => (
                       <div
@@ -196,7 +196,7 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
             </>
           ) : (
             <div>
-              <h2 className="text-2xl font-bold mb-8">What are you selling? <span className="text-red-500">*</span></h2>
+              <h2 className="text-2xl font-bold mb-8">What are you selling?</h2>
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
                 {categories.map((category) => (
                   <div
