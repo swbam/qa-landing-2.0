@@ -15,11 +15,13 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
   const [selectedMake, setSelectedMake] = useState('All makes');
   const [selectedModel, setSelectedModel] = useState('All models');
   const [selectedPrice, setSelectedPrice] = useState('Any Price');
+  const [selectedCategory, setSelectedCategory] = useState('All Categories');
 
   // Define your data arrays
   const makes = ['All makes', 'Toyota', 'Honda', 'Ford', 'Chevrolet', 'BMW', 'Mercedes-Benz', 'Audi', 'Lexus'];
   const models = ['All models', 'Camry', 'Civic', 'F-150', 'Silverado', 'X5', 'C-Class', 'A4', 'RX'];
   const prices = ['Any Price', 'Under $10,000', '$10,000 - $20,000', '$20,000 - $30,000', '$30,000 - $40,000', '$40,000+'];
+  const vehicleCategories = ['All Categories', 'Automobile', 'Motorcycle', 'Watercraft', 'Equipment', 'Miscellaneous'];
 
   // Categories for the seller tab
   const automobileCategories = ['Car', 'Truck', 'SUV', 'Van', 'Other'];
@@ -45,17 +47,17 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
   return (
     <div className="bg-white rounded-[3px] shadow-lg p-6 max-w-5xl mx-auto">
       {/* Tabs */}
-      <div className="flex mb-6">
+      <div className="flex mb-6 justify-center">
         <button 
           onClick={() => setActiveTab('Buy')}
-          className={`flex-1 py-3 text-center font-medium ${activeTab === 'Buy' ? 'bg-primary text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'} rounded-l-[3px]`}
+          className={`px-12 py-3 text-center font-medium ${activeTab === 'Buy' ? 'bg-primary text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'} rounded-l-[3px]`}
           style={{ backgroundColor: activeTab === 'Buy' ? styles.primary : '' }}
         >
           Buy
         </button>
         <button 
           onClick={() => setActiveTab('Sell/Trade')}
-          className={`flex-1 py-3 text-center font-medium ${activeTab === 'Sell/Trade' ? 'bg-primary text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'} rounded-r-[3px]`}
+          className={`px-12 py-3 text-center font-medium ${activeTab === 'Sell/Trade' ? 'bg-primary text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'} rounded-r-[3px]`}
           style={{ backgroundColor: activeTab === 'Sell/Trade' ? styles.primary : '' }}
         >
           Sell/Trade
@@ -67,22 +69,22 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
           <div>
             <select 
               className="w-full px-4 py-3 border border-gray-200 rounded-[3px] focus:outline-none focus:border-primary bg-white"
-              value={selectedMake}
-              onChange={(event) => setSelectedMake(event.target.value)}
+              value={selectedCategory}
+              onChange={(event) => setSelectedCategory(event.target.value)}
             >
-              {makes.map(make => (
-                <option key={make}>{make}</option>
+              {vehicleCategories.map(category => (
+                <option key={category}>{category}</option>
               ))}
             </select>
           </div>
           <div>
             <select 
               className="w-full px-4 py-3 border border-gray-200 rounded-[3px] focus:outline-none focus:border-primary bg-white"
-              value={selectedModel}
-              onChange={(event) => setSelectedModel(event.target.value)}
+              value={selectedMake}
+              onChange={(event) => setSelectedMake(event.target.value)}
             >
-              {models.map(model => (
-                <option key={model}>{model}</option>
+              {makes.map(make => (
+                <option key={make}>{make}</option>
               ))}
             </select>
           </div>
