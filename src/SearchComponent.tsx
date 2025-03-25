@@ -123,55 +123,140 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
                   </div>
                 </div>
               ) : (
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                  <div>
-                    <select 
-                      className="w-full px-4 py-3 border border-gray-200 rounded-[3px] focus:outline-none focus:border-primary bg-white"
-                      value={selectedCategory}
-                      onChange={(event) => setSelectedCategory(event.target.value)}
-                    >
-                      {vehicleCategories.map(category => (
-                        <option key={category}>{category}</option>
-                      ))}
-                    </select>
+                <div>
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 mb-6">
+                    <div>
+                      <select 
+                        className="w-full px-4 py-3 border border-gray-200 rounded-[3px] focus:outline-none focus:border-primary bg-white"
+                        value={selectedCategory}
+                        onChange={(event) => setSelectedCategory(event.target.value)}
+                      >
+                        <option>Start Year</option>
+                        {Array.from({ length: 44 }, (_, i) => 2024 - i).map(year => (
+                          <option key={year} value={year}>{year}</option>
+                        ))}
+                      </select>
+                    </div>
+                    <div>
+                      <select 
+                        className="w-full px-4 py-3 border border-gray-200 rounded-[3px] focus:outline-none focus:border-primary bg-white"
+                        value={selectedSubCategory}
+                        onChange={(event) => setSelectedSubCategory(event.target.value)}
+                      >
+                        <option>End Year</option>
+                        {Array.from({ length: 44 }, (_, i) => 2024 - i).map(year => (
+                          <option key={year} value={year}>{year}</option>
+                        ))}
+                      </select>
+                    </div>
+                    <div>
+                      <select 
+                        className="w-full px-4 py-3 border border-gray-200 rounded-[3px] focus:outline-none focus:border-primary bg-white"
+                        value={selectedMake}
+                        onChange={(event) => setSelectedMake(event.target.value)}
+                      >
+                        <option>Make</option>
+                        {availableMakes.map(make => (
+                          <option key={make}>{make}</option>
+                        ))}
+                      </select>
+                    </div>
+                    <div>
+                      <select 
+                        className="w-full px-4 py-3 border border-gray-200 rounded-[3px] focus:outline-none focus:border-primary bg-white"
+                      >
+                        <option>Model</option>
+                        {/* Models would be populated based on make */}
+                      </select>
+                    </div>
+                    <div>
+                      <select 
+                        className="w-full px-4 py-3 border border-gray-200 rounded-[3px] focus:outline-none focus:border-primary bg-white"
+                      >
+                        <option>Distance from you</option>
+                        <option>10 miles</option>
+                        <option>25 miles</option>
+                        <option>50 miles</option>
+                        <option>100 miles</option>
+                        <option>250 miles</option>
+                        <option>500 miles</option>
+                        <option>Any distance</option>
+                      </select>
+                    </div>
                   </div>
-                  <div>
-                    <select 
-                      className="w-full px-4 py-3 border border-gray-200 rounded-[3px] focus:outline-none focus:border-primary bg-white"
-                      value={selectedSubCategory}
-                      onChange={(event) => setSelectedSubCategory(event.target.value)}
-                      disabled={selectedCategory === 'All Categories'}
-                    >
-                      <option value="">All Types</option>
-                      {getSubCategories().map(subcategory => (
-                        <option key={subcategory} value={subcategory}>{subcategory}</option>
-                      ))}
-                    </select>
+                  
+                  <div className="mb-6">
+                    <div className="flex items-center justify-between mb-2">
+                      <h3 className="font-bold text-lg">Advanced Filters <span className="bg-primary text-white rounded-full px-2 py-0.5 text-xs" style={{ backgroundColor: styles.primary }}>2</span></h3>
+                      <button className="text-gray-500">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <polyline points="18 15 12 9 6 15"></polyline>
+                        </svg>
+                      </button>
+                    </div>
+                    
+                    <div className="mb-6">
+                      <h4 className="font-medium mb-2">Mileage</h4>
+                      <div className="flex items-center">
+                        <span className="pr-4">0 mi</span>
+                        <div className="relative flex-grow h-2 bg-gray-200 rounded-full">
+                          <div className="absolute h-2 bg-primary rounded-full" style={{ width: '60%', backgroundColor: styles.primary }}></div>
+                          <div className="absolute h-4 w-4 bg-white border border-primary rounded-full -mt-1 -ml-2" style={{ left: '60%', borderColor: styles.primary }}></div>
+                        </div>
+                        <span className="pl-4">200,000 mi</span>
+                      </div>
+                    </div>
+                    
+                    <div className="mb-6">
+                      <h4 className="font-medium mb-2">Current High Bid Range</h4>
+                      <div className="flex items-center">
+                        <span className="pr-4">$0.00</span>
+                        <div className="relative flex-grow h-2 bg-gray-200 rounded-full">
+                          <div className="absolute h-2 bg-primary rounded-full" style={{ width: '40%', backgroundColor: styles.primary }}></div>
+                          <div className="absolute h-4 w-4 bg-white border border-primary rounded-full -mt-1 -ml-2" style={{ left: '40%', borderColor: styles.primary }}></div>
+                        </div>
+                        <span className="pl-4">$50,000.00</span>
+                      </div>
+                    </div>
+                    
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                      <div>
+                        <h4 className="font-medium mb-2">Vehicle Color</h4>
+                        <select className="w-full px-4 py-3 border border-gray-200 rounded-[3px] focus:outline-none focus:border-primary bg-white">
+                          <option>Any Color</option>
+                          <option>Black</option>
+                          <option>White</option>
+                          <option>Gray</option>
+                          <option>Silver</option>
+                          <option>Blue</option>
+                          <option>Red</option>
+                          <option>Green</option>
+                          <option>Yellow</option>
+                          <option>Orange</option>
+                          <option>Brown</option>
+                          <option>Purple</option>
+                        </select>
+                      </div>
+                      <div>
+                        <h4 className="font-medium mb-2">Transmission Type</h4>
+                        <select className="w-full px-4 py-3 border border-gray-200 rounded-[3px] focus:outline-none focus:border-primary bg-white">
+                          <option>Any Transmission</option>
+                          <option>Automatic</option>
+                          <option>Manual</option>
+                          <option>CVT</option>
+                          <option>Semi-automatic</option>
+                        </select>
+                      </div>
+                    </div>
+                    
+                    <div className="flex justify-end">
+                      <button className="text-primary font-medium" style={{ color: styles.primary }}>
+                        Reset Filters
+                      </button>
+                    </div>
                   </div>
+                  
                   <div>
-                    <select 
-                      className="w-full px-4 py-3 border border-gray-200 rounded-[3px] focus:outline-none focus:border-primary bg-white"
-                      value={selectedMake}
-                      onChange={(event) => setSelectedMake(event.target.value)}
-                      disabled={selectedCategory === 'All Categories'}
-                    >
-                      {availableMakes.map(make => (
-                        <option key={make}>{make}</option>
-                      ))}
-                    </select>
-                  </div>
-                  <div>
-                    <select 
-                      className="w-full px-4 py-3 border border-gray-200 rounded-[3px] focus:outline-none focus:border-primary bg-white"
-                      value={selectedPrice}
-                      onChange={(event) => setSelectedPrice(event.target.value)}
-                    >
-                      {['Any Price', 'Under $10,000', '$10,000 - $20,000', '$20,000 - $30,000', '$30,000 - $40,000', '$40,000+'].map(price => (
-                        <option key={price}>{price}</option>
-                      ))}
-                    </select>
-                  </div>
-                  <div className="lg:col-span-4">
                     <button 
                       className="w-full bg-primary text-white px-6 py-3 rounded-[3px] hover:bg-primary-dark flex items-center justify-center"
                       style={{ backgroundColor: styles.primary }}
@@ -182,7 +267,7 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
                       Search
                     </button>
                   </div>
-                  <div className="col-span-4 mt-4">
+                  <div className="mt-4">
                     <button 
                       className="text-primary hover:underline"
                       onClick={() => setBuyShowCategories(true)}
