@@ -14,6 +14,7 @@ export default {
   resolve: {
     extensions: ['.tsx', '.ts', '.js']
   },
+  mode: 'production',
   module: {
     rules: [
       {
@@ -23,7 +24,11 @@ export default {
           loader: 'ts-loader',
           options: {
             configFile: 'tsconfig.webpack.json',
-            transpileOnly: true  // Skip type checking to avoid errors
+            transpileOnly: true,  // Skip type checking
+            compilerOptions: {
+              noEmit: false,
+              jsx: 'react'
+            }
           }
         }
       },

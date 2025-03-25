@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QuickAuction Search Component Demo</title>
+  
+  <!-- React and ReactDOM -->
+  <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
+
+  <!-- CSS Variables -->
+  <style>
+  :root {
+    --primary: #0054da;
+    --primary-dark: #0049bb;
+  }
+  </style>
+
+  <!-- Component CSS -->
+  <link rel="stylesheet" href="./quickauction-search.css">
+  
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f0f2f5;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #333;
+    }
+    .demo-section {
+      background-color: white;
+      border-radius: 8px;
+      padding: 30px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>QuickAuction Search Component Demo</h1>
+    
+    <div class="demo-section">
+      <div class="quickauction-search-component" data-primary-color="#0054da" data-primary-dark-color="#0049bb"></div>
+    </div>
+  </div>
+
+  <!-- Component JS -->
+  <script src="./quickauction-search.js"></script>
+</body>
+</html> 
