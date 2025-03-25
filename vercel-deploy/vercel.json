@@ -1,9 +1,16 @@
 {
   "version": 2,
   "public": true,
-  "routes": [
-    { "src": "/quickauction-search.js", "dest": "/quickauction-search.js" },
-    { "src": "/quickauction-search.css", "dest": "/quickauction-search.css" },
-    { "src": "/(.*)", "dest": "/$1" }
+  "buildCommand": null,
+  "outputDirectory": "public",
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "Access-Control-Allow-Origin", "value": "*" },
+        { "key": "Access-Control-Allow-Methods", "value": "GET, OPTIONS" },
+        { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
+      ]
+    }
   ]
 } 
