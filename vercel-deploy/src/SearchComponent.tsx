@@ -54,11 +54,11 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
           Buy
         </button>
         <button 
-          onClick={() => setActiveTab('Sell/Trade')}
-          className={`px-12 py-3 text-center font-medium ${activeTab === 'Sell/Trade' ? 'bg-primary text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'} rounded-r-[3px]`}
-          style={{ backgroundColor: activeTab === 'Sell/Trade' ? styles.primary : '' }}
+          onClick={() => setActiveTab('Sell')}
+          className={`px-12 py-3 text-center font-medium ${activeTab === 'Sell' ? 'bg-primary text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'} rounded-r-[3px]`}
+          style={{ backgroundColor: activeTab === 'Sell' ? styles.primary : '' }}
         >
-          Sell/Trade
+          Sell
         </button>
       </div>
 

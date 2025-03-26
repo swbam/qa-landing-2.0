@@ -193,10 +193,10 @@ function App() {
                 Buy
               </button>
               <button 
-                onClick={() => setActiveTab('Sell/Trade')}
-                className={`flex-1 py-3 text-center font-medium ${activeTab === 'Sell/Trade' ? 'bg-primary text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'} rounded-r-[3px]`}
+                onClick={() => setActiveTab('Sell')}
+                className={`flex-1 py-3 text-center font-medium ${activeTab === 'Sell' ? 'bg-primary text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'} rounded-r-[3px]`}
               >
-                Sell/Trade
+                Sell
               </button>
             </div>
 
