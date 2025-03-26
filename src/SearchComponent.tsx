@@ -99,7 +99,7 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
     <div className="quickauction-component-wrapper w-full">
       {/* Hero section with background image - taller for better appearance */}
       <div 
-        className="w-full py-24 sm:py-32 md:py-40 bg-cover bg-center relative" 
+        className="w-full py-24 sm:py-32 md:py-40 bg-cover bg-center relative flex items-center" 
         style={{ 
           backgroundImage: `url(${backgroundImage})`,
           backgroundSize: 'cover',
@@ -109,8 +109,8 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
         {/* Dark overlay */}
         <div className="absolute inset-0 bg-black opacity-40"></div>
         
-        <div className="max-w-5xl mx-auto px-3 sm:px-4 text-center text-white relative z-10">
-          <h1 className="text-4xl sm:text-5xl font-bold mb-3 sm:mb-5">Quick Listing. Competitive Bidding. Fast Results.</h1>
+        <div className="max-w-5xl mx-auto px-3 sm:px-4 text-center text-white relative z-10 flex flex-col justify-center py-8">
+          <h1 className="text-4xl sm:text-5xl font-bold mb-6">Quick Listing. Competitive Bidding. Fast Results.</h1>
           <p className="text-lg sm:text-xl">From cars to watercraft, motorcycles to miscellaneous items—connect with motivated buyers and sellers for competitive bidding in minutes.</p>
         </div>
       </div>
