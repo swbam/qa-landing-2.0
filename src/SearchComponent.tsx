@@ -18,6 +18,7 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
   const [selectedCategory, setSelectedCategory] = useState('');
   const [selectedSubCategory, setSelectedSubCategory] = useState('');
   const [availableMakes, setAvailableMakes] = useState<string[]>([]);
+  const [isSearchFocused, setIsSearchFocused] = useState(false);
 
   // Define category data structure
   const vehicleCategories = ['All Categories', 'Automobile', 'Motorcycle', 'Watercraft', 'Heavy Equipment', 'Miscellaneous'];
@@ -114,20 +115,20 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
         </div>
       
         {/* Search component card - positioned halfway within the background image */}
-        <div className="w-full max-w-5xl mx-auto px-3 sm:px-4 absolute left-0 right-0 top-1/2">
-          <div className="bg-white rounded-lg shadow-lg p-4 sm:p-6">
+        <div className="w-full max-w-5xl mx-auto px-3 sm:px-4 absolute left-0 right-0 top-1/2 transform -translate-y-1/3">
+          <div className="bg-white rounded-lg shadow-xl p-4 sm:p-6">
             {/* Tabs - full width on mobile */}
             <div className="flex mb-5 sm:mb-6 justify-center">
               <button 
                 onClick={() => setActiveTab('Sell')}
-                className={`flex-1 sm:flex-none sm:px-12 py-3 text-center font-medium ${activeTab === 'Sell' ? 'bg-primary text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'} rounded-l-lg`}
+                className={`flex-1 sm:flex-none sm:px-12 py-3 text-center font-medium ${activeTab === 'Sell' ? 'bg-primary text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'} rounded-l-lg transition-all duration-200`}
                 style={{ backgroundColor: activeTab === 'Sell' ? styles.primary : '' }}
               >
                 Sell
               </button>
               <button 
                 onClick={() => setActiveTab('Buy')}
-                className={`flex-1 sm:flex-none sm:px-12 py-3 text-center font-medium ${activeTab === 'Buy' ? 'bg-primary text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'} rounded-r-lg`}
+                className={`flex-1 sm:flex-none sm:px-12 py-3 text-center font-medium ${activeTab === 'Buy' ? 'bg-primary text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'} rounded-r-lg transition-all duration-200`}
                 style={{ backgroundColor: activeTab === 'Buy' ? styles.primary : '' }}
               >
                 Buy
@@ -142,14 +143,16 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
                   {categories.map((category) => (
                     <div
                       key={category.name}
-                      className={`bg-white border ${selectedCategory === category.name ? 'border-primary' : 'border-gray-200'} rounded-lg shadow-sm hover:shadow-md transition-shadow text-center p-3 sm:p-6 cursor-pointer hover:border-primary`}
+                      className={`bg-white border ${selectedCategory === category.name ? 'border-primary shadow-md' : 'border-gray-200'} rounded-lg shadow-sm hover:shadow-md transition-all duration-200 text-center p-3 sm:p-6 cursor-pointer hover:border-primary transform ${selectedCategory === category.name ? 'scale-105' : 'hover:scale-102'}`}
                       onClick={() => setSelectedCategory(category.name === selectedCategory ? '' : category.name)}
+                      style={{ borderColor: selectedCategory === category.name ? styles.primary : '' }}
                     >
                       <div className="flex justify-center mb-2 sm:mb-4">
                         {React.createElement(category.icon, { 
                           size: 36, 
-                          stroke: "#0054da", 
-                          strokeWidth: 1.5 
+                          stroke: selectedCategory === category.name ? styles.primary : "#0054da", 
+                          strokeWidth: 1.5,
+                          className: "transition-all duration-200"
                         })}
                       </div>
                       <h3 className="font-medium text-sm sm:text-base">{category.name}</h3>
@@ -158,13 +161,14 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
                 </div>
 
                 {selectedCategory && (
-                  <div className="mt-5 sm:mt-8">
+                  <div className="mt-5 sm:mt-8 animate-fadeIn">
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
                       <div>
                         <select 
-                          className="w-full px-3 py-3 border border-gray-200 rounded-lg focus:outline-none focus:border-primary bg-white"
+                          className="w-full px-3 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary bg-white transition-all duration-200"
                           value={selectedMake}
                           onChange={(event) => setSelectedMake(event.target.value)}
+                          style={{ borderColor: isSearchFocused ? styles.primary : '' }}
                         >
                           <option>All makes</option>
                           {availableMakes.slice(1).map(make => (
@@ -174,7 +178,9 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
                       </div>
                       <div>
                         <select 
-                          className="w-full px-3 py-3 border border-gray-200 rounded-lg focus:outline-none focus:border-primary bg-white"
+                          className="w-full px-3 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary bg-white transition-all duration-200"
+                          onFocus={() => setIsSearchFocused(true)}
+                          onBlur={() => setIsSearchFocused(false)}
                         >
                           <option>All models</option>
                           {/* Models would be populated based on make */}
@@ -182,9 +188,11 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
                       </div>
                       <div>
                         <select 
-                          className="w-full px-3 py-3 border border-gray-200 rounded-lg focus:outline-none focus:border-primary bg-white"
+                          className="w-full px-3 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary bg-white transition-all duration-200"
                           value={selectedPrice}
                           onChange={(event) => setSelectedPrice(event.target.value)}
+                          onFocus={() => setIsSearchFocused(true)}
+                          onBlur={() => setIsSearchFocused(false)}
                         >
                           {['Any Price', 'Under $10,000', '$10,000 - $20,000', '$20,000 - $30,000', '$30,000 - $40,000', '$40,000+'].map(price => (
                             <option key={price}>{price}</option>
@@ -193,7 +201,7 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
                       </div>
                       <div>
                         <button 
-                          className="w-full bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary-dark flex items-center justify-center"
+                          className="w-full bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary-dark flex items-center justify-center transition-all duration-200 hover:shadow-md"
                           style={{ backgroundColor: styles.primary }}
                           onMouseOver={(e) => e.currentTarget.style.backgroundColor = styles.primaryDark}
                           onMouseOut={(e) => e.currentTarget.style.backgroundColor = styles.primary}
@@ -213,14 +221,16 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
                   {categories.map((category) => (
                     <div
                       key={category.name}
-                      className={`bg-white border ${selectedCategory === category.name ? 'border-primary' : 'border-gray-200'} rounded-lg shadow-sm hover:shadow-md transition-shadow text-center p-3 sm:p-6 cursor-pointer hover:border-primary`}
+                      className={`bg-white border ${selectedCategory === category.name ? 'border-primary shadow-md' : 'border-gray-200'} rounded-lg shadow-sm hover:shadow-md transition-all duration-200 text-center p-3 sm:p-6 cursor-pointer hover:border-primary transform ${selectedCategory === category.name ? 'scale-105' : 'hover:scale-102'}`}
                       onClick={() => setSelectedCategory(category.name === selectedCategory ? '' : category.name)}
+                      style={{ borderColor: selectedCategory === category.name ? styles.primary : '' }}
                     >
                       <div className="flex justify-center mb-2 sm:mb-4">
                         {React.createElement(category.icon, { 
                           size: 36, 
-                          stroke: "#0054da", 
-                          strokeWidth: 1.5 
+                          stroke: selectedCategory === category.name ? styles.primary : "#0054da", 
+                          strokeWidth: 1.5,
+                          className: "transition-all duration-200"
                         })}
                       </div>
                       <h3 className="font-medium text-sm sm:text-base">{category.name}</h3>
@@ -229,11 +239,11 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
                 </div>
                 
                 {selectedCategory && (
-                  <div className="mt-5 sm:mt-8">
+                  <div className="mt-5 sm:mt-8 animate-fadeIn">
                     <div className="grid grid-cols-1 gap-3 sm:gap-4">
                       <div>
                         <button 
-                          className="w-full bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary-dark flex items-center justify-center"
+                          className="w-full bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary-dark flex items-center justify-center transition-all duration-200 hover:shadow-md"
                           style={{ backgroundColor: styles.primary }}
                           onMouseOver={(e) => e.currentTarget.style.backgroundColor = styles.primaryDark}
                           onMouseOut={(e) => e.currentTarget.style.backgroundColor = styles.primary}
@@ -252,7 +262,7 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
         
         {/* Subheadline placed within the background image, below the search box */}
         <div className="w-full max-w-5xl mx-auto px-3 sm:px-4 absolute left-0 right-0 bottom-10 text-center text-white">
-          <p className="text-lg sm:text-xl">From cars to watercraft, motorcycles to miscellaneous items—connect with motivated buyers and sellers for competitive bidding in minutes.</p>
+          <p className="text-lg sm:text-xl leading-relaxed drop-shadow-md">From cars to watercraft, motorcycles to miscellaneous items—connect with motivated buyers and sellers for competitive bidding in minutes.</p>
         </div>
       </div>
     </div>
