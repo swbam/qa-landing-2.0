@@ -1,24 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import SearchComponent from './SearchComponent';
-import './index.css';
 import './tailwind-webflow.css';
+import './index.css';
 
-// Initialize our component with any data attributes from the DOM element
+// Wait for DOM to be loaded
 document.addEventListener('DOMContentLoaded', () => {
-  const mountPoints = document.querySelectorAll('.quickauction-search-component');
+  // Find all instances of the component on the page
+  const elements = document.querySelectorAll('.quickauction-search-component');
   
-  mountPoints.forEach((mountPoint) => {
-    // Get any custom config from data attributes
-    const primaryColor = mountPoint.getAttribute('data-primary-color') || '#0054da';
-    const primaryDarkColor = mountPoint.getAttribute('data-primary-dark-color') || '#0049bb';
+  // Render the component in each element
+  elements.forEach(el => {
+    const primaryColor = el.getAttribute('data-primary-color') || '#0054da';
+    const primaryDarkColor = el.getAttribute('data-primary-dark-color') || '#0049bb';
     
     ReactDOM.render(
-      <SearchComponent
-        primaryColor={primaryColor}
-        primaryDarkColor={primaryDarkColor}
+      <SearchComponent 
+        primaryColor={primaryColor} 
+        primaryDarkColor={primaryDarkColor} 
       />,
-      mountPoint
+      el
     );
   });
 }); 

@@ -97,9 +97,9 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
 
   return (
     <div className="quickauction-component-wrapper w-full">
-      {/* Hero section with background image - full width on mobile */}
+      {/* Hero section with background image - taller for better appearance */}
       <div 
-        className="w-full py-10 sm:py-16 bg-cover bg-center relative" 
+        className="w-full py-24 sm:py-32 md:py-40 bg-cover bg-center relative" 
         style={{ 
           backgroundImage: `url(${backgroundImage})`,
           backgroundSize: 'cover',
@@ -115,21 +115,21 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
         </div>
       </div>
       
-      {/* Search component card - less padding on mobile, adjusted positioning */}
-      <div className="w-full max-w-5xl mx-auto px-3 sm:px-4 relative -mt-6 sm:-mt-8">
-        <div className="bg-white rounded-[3px] shadow-lg p-4 sm:p-6">
+      {/* Search component card - positioned halfway below the background image */}
+      <div className="w-full max-w-5xl mx-auto px-3 sm:px-4 relative -mt-24 sm:-mt-32">
+        <div className="bg-white rounded-lg shadow-lg p-4 sm:p-6">
           {/* Tabs - full width on mobile */}
           <div className="flex mb-5 sm:mb-6 justify-center">
             <button 
               onClick={() => setActiveTab('Buy')}
-              className={`flex-1 sm:flex-none sm:px-12 py-3 text-center font-medium ${activeTab === 'Buy' ? 'bg-primary text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'} rounded-l-[3px]`}
+              className={`flex-1 sm:flex-none sm:px-12 py-3 text-center font-medium ${activeTab === 'Buy' ? 'bg-primary text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'} rounded-l-lg`}
               style={{ backgroundColor: activeTab === 'Buy' ? styles.primary : '' }}
             >
               Buy
             </button>
             <button 
               onClick={() => setActiveTab('Sell/Trade')}
-              className={`flex-1 sm:flex-none sm:px-12 py-3 text-center font-medium ${activeTab === 'Sell/Trade' ? 'bg-primary text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'} rounded-r-[3px]`}
+              className={`flex-1 sm:flex-none sm:px-12 py-3 text-center font-medium ${activeTab === 'Sell/Trade' ? 'bg-primary text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'} rounded-r-lg`}
               style={{ backgroundColor: activeTab === 'Sell/Trade' ? styles.primary : '' }}
             >
               Sell/Trade
@@ -144,7 +144,7 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
                 {categories.map((category) => (
                   <div
                     key={category.name}
-                    className={`bg-white border ${selectedCategory === category.name ? 'border-primary' : 'border-gray-200'} rounded-[3px] shadow-sm hover:shadow-md transition-shadow text-center p-3 sm:p-6 cursor-pointer hover:border-primary`}
+                    className={`bg-white border ${selectedCategory === category.name ? 'border-primary' : 'border-gray-200'} rounded-lg shadow-sm hover:shadow-md transition-shadow text-center p-3 sm:p-6 cursor-pointer hover:border-primary`}
                     onClick={() => setSelectedCategory(category.name === selectedCategory ? '' : category.name)}
                   >
                     <div className="flex justify-center mb-2 sm:mb-4">
@@ -164,7 +164,7 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
                     <div>
                       <select 
-                        className="w-full px-3 py-3 border border-gray-200 rounded-[3px] focus:outline-none focus:border-primary bg-white"
+                        className="w-full px-3 py-3 border border-gray-200 rounded-lg focus:outline-none focus:border-primary bg-white"
                         value={selectedMake}
                         onChange={(event) => setSelectedMake(event.target.value)}
                       >
@@ -176,7 +176,7 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
                     </div>
                     <div>
                       <select 
-                        className="w-full px-3 py-3 border border-gray-200 rounded-[3px] focus:outline-none focus:border-primary bg-white"
+                        className="w-full px-3 py-3 border border-gray-200 rounded-lg focus:outline-none focus:border-primary bg-white"
                       >
                         <option>All models</option>
                         {/* Models would be populated based on make */}
@@ -184,7 +184,7 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
                     </div>
                     <div>
                       <select 
-                        className="w-full px-3 py-3 border border-gray-200 rounded-[3px] focus:outline-none focus:border-primary bg-white"
+                        className="w-full px-3 py-3 border border-gray-200 rounded-lg focus:outline-none focus:border-primary bg-white"
                         value={selectedPrice}
                         onChange={(event) => setSelectedPrice(event.target.value)}
                       >
@@ -195,7 +195,7 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
                     </div>
                     <div>
                       <button 
-                        className="w-full bg-primary text-white px-6 py-3 rounded-[3px] hover:bg-primary-dark flex items-center justify-center"
+                        className="w-full bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary-dark flex items-center justify-center"
                         style={{ backgroundColor: styles.primary }}
                         onMouseOver={(e) => e.currentTarget.style.backgroundColor = styles.primaryDark}
                         onMouseOut={(e) => e.currentTarget.style.backgroundColor = styles.primary}
@@ -215,7 +215,7 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
                 {categories.map((category) => (
                   <div
                     key={category.name}
-                    className={`bg-white border ${selectedCategory === category.name ? 'border-primary' : 'border-gray-200'} rounded-[3px] shadow-sm hover:shadow-md transition-shadow text-center p-3 sm:p-6 cursor-pointer hover:border-primary`}
+                    className={`bg-white border ${selectedCategory === category.name ? 'border-primary' : 'border-gray-200'} rounded-lg shadow-sm hover:shadow-md transition-shadow text-center p-3 sm:p-6 cursor-pointer hover:border-primary`}
                     onClick={() => setSelectedCategory(category.name === selectedCategory ? '' : category.name)}
                   >
                     <div className="flex justify-center mb-2 sm:mb-4">
@@ -235,7 +235,7 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
                   <div className="grid grid-cols-1 gap-3 sm:gap-4">
                     <div>
                       <button 
-                        className="w-full bg-primary text-white px-6 py-3 rounded-[3px] hover:bg-primary-dark flex items-center justify-center"
+                        className="w-full bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary-dark flex items-center justify-center"
                         style={{ backgroundColor: styles.primary }}
                         onMouseOver={(e) => e.currentTarget.style.backgroundColor = styles.primaryDark}
                         onMouseOut={(e) => e.currentTarget.style.backgroundColor = styles.primary}

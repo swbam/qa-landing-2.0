@@ -262,71 +262,7 @@ function App() {
         </div>
       </div>
 
-      {/* Budget Calculator */}
-      <section className="bg-white py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-3xl font-bold mb-6">Estimate your budget</h2>
-              <div className="space-y-6">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Monthly Payment
-                  </label>
-                  <div className="relative">
-                    <DollarSign className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-                    <input
-                      type="text"
-                      value={budget}
-                      onChange={(e) => setBudget(e.target.value)}
-                      className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-[3px] focus:outline-none focus:border-primary"
-                    />
-                  </div>
-                </div>
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Down Payment
-                    </label>
-                    <input
-                      type="text"
-                      className="w-full px-4 py-3 border border-gray-200 rounded-[3px] focus:outline-none focus:border-primary"
-                      placeholder="$5,000"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Term Length
-                    </label>
-                    <select className="w-full px-4 py-3 border border-gray-200 rounded-[3px] focus:outline-none focus:border-primary bg-white">
-                      <option>36 months</option>
-                      <option>48 months</option>
-                      <option>60 months</option>
-                      <option>72 months</option>
-                    </select>
-                  </div>
-                </div>
-                <button className="w-full bg-primary text-white px-6 py-3 rounded-[3px] hover:bg-primary-dark">
-                  Calculate Payment
-                </button>
-              </div>
-            </div>
-            <div className="bg-gray-50 p-8 rounded-[3px]">
-              <h3 className="text-2xl font-bold mb-4">Estimated Budget</h3>
-              <div className="text-5xl font-bold text-primary mb-6">
-                ${parseInt(budget).toLocaleString()}
-              </div>
-              <p className="text-gray-600 mb-4">
-                Based on your inputs, you could afford a vehicle up to this price.
-              </p>
-              <button className="text-primary font-semibold hover:text-primary-dark flex items-center">
-                View matching vehicles
-                <ArrowRight className="w-4 h-4 ml-2" />
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
+     
 
       {/* Browse by Category */}
       <section className="bg-gray-50 py-16">
