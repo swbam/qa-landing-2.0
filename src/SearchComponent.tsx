@@ -111,12 +111,12 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
         <div className="absolute inset-0 bg-black opacity-40"></div>
         
         <div className="max-w-5xl mx-auto px-3 sm:px-4 text-center text-white relative z-10 flex flex-col justify-center py-4">
-          <h1 className="text-4xl sm:text-5xl font-bold mb-6">Quick Listing. Competitive Bidding. Fast Results.</h1>
+          <h1 className="text-4xl sm:text-5xl font-bold mb-12">Quick Listing. Competitive Bidding. Fast Results.</h1>
         </div>
       
         {/* Search component card - positioned halfway within the background image */}
         <div className="w-full max-w-5xl mx-auto px-3 sm:px-4 absolute left-0 right-0 top-1/2 transform -translate-y-1/3">
-          <div className="bg-white rounded-lg shadow-xl p-4 sm:p-6">
+          <div className="bg-white rounded-lg shadow-xl p-6 sm:p-8">
             {/* Tabs - full width on mobile */}
             <div className="flex mb-5 sm:mb-6 justify-center">
               <button 
@@ -260,9 +260,9 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
           </div>
         </div>
         
-        {/* Subheadline placed within the background image, below the search box */}
-        <div className="w-full max-w-5xl mx-auto px-3 sm:px-4 absolute left-0 right-0 bottom-10 text-center text-white">
-          <p className="text-lg sm:text-xl leading-relaxed drop-shadow-md">From cars to watercraft, motorcycles to miscellaneous items—connect with motivated buyers and sellers for competitive bidding in minutes.</p>
+        {/* Subheadline placed within the background image, below the search box with more spacing */}
+        <div className="w-full mx-auto px-3 sm:px-4 absolute left-0 right-0 bottom-16 text-center text-white">
+          <p className="max-w-lg mx-auto text-lg sm:text-xl leading-relaxed drop-shadow-md mt-12">From cars to watercraft, motorcycles to miscellaneous items—connect with motivated buyers and sellers for competitive bidding in minutes.</p>
         </div>
       </div>
     </div>
