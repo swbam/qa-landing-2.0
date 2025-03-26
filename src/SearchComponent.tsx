@@ -96,10 +96,10 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
   };
 
   return (
-    <div className="quickauction-component-wrapper">
-      {/* Hero section with background image */}
+    <div className="quickauction-component-wrapper w-full">
+      {/* Hero section with background image - full width on mobile */}
       <div 
-        className="w-full py-16 bg-cover bg-center relative" 
+        className="w-full py-10 sm:py-16 bg-cover bg-center relative" 
         style={{ 
           backgroundImage: `url(${backgroundImage})`,
           backgroundSize: 'cover',
@@ -109,27 +109,27 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
         {/* Dark overlay */}
         <div className="absolute inset-0 bg-black opacity-40"></div>
         
-        <div className="max-w-5xl mx-auto px-4 text-center text-white relative z-10">
-          <h1 className="text-5xl font-bold mb-5">Quick Listing. Competitive Bidding. Fast Results.</h1>
-          <p className="text-xl">From cars to watercraft, motorcycles to miscellaneous items—connect with motivated buyers and sellers for competitive bidding in minutes.</p>
+        <div className="max-w-5xl mx-auto px-3 sm:px-4 text-center text-white relative z-10">
+          <h1 className="text-4xl sm:text-5xl font-bold mb-3 sm:mb-5">Quick Listing. Competitive Bidding. Fast Results.</h1>
+          <p className="text-lg sm:text-xl">From cars to watercraft, motorcycles to miscellaneous items—connect with motivated buyers and sellers for competitive bidding in minutes.</p>
         </div>
       </div>
       
-      {/* Search component card */}
-      <div className="max-w-5xl mx-auto px-4 relative -mt-8">
-        <div className="bg-white rounded-[3px] shadow-lg p-6">
-          {/* Tabs */}
-          <div className="flex mb-6 justify-center">
+      {/* Search component card - less padding on mobile, adjusted positioning */}
+      <div className="w-full max-w-5xl mx-auto px-3 sm:px-4 relative -mt-6 sm:-mt-8">
+        <div className="bg-white rounded-[3px] shadow-lg p-4 sm:p-6">
+          {/* Tabs - full width on mobile */}
+          <div className="flex mb-5 sm:mb-6 justify-center">
             <button 
               onClick={() => setActiveTab('Buy')}
-              className={`px-12 py-3 text-center font-medium ${activeTab === 'Buy' ? 'bg-primary text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'} rounded-l-[3px]`}
+              className={`flex-1 sm:flex-none sm:px-12 py-3 text-center font-medium ${activeTab === 'Buy' ? 'bg-primary text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'} rounded-l-[3px]`}
               style={{ backgroundColor: activeTab === 'Buy' ? styles.primary : '' }}
             >
               Buy
             </button>
             <button 
               onClick={() => setActiveTab('Sell/Trade')}
-              className={`px-12 py-3 text-center font-medium ${activeTab === 'Sell/Trade' ? 'bg-primary text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'} rounded-r-[3px]`}
+              className={`flex-1 sm:flex-none sm:px-12 py-3 text-center font-medium ${activeTab === 'Sell/Trade' ? 'bg-primary text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'} rounded-r-[3px]`}
               style={{ backgroundColor: activeTab === 'Sell/Trade' ? styles.primary : '' }}
             >
               Sell/Trade
@@ -138,32 +138,33 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
 
           {activeTab === 'Buy' ? (
             <div>
-              <h2 className="text-2xl font-bold mb-8">What are you looking for?</h2>
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 mb-6">
+              <h2 className="text-xl sm:text-2xl font-bold mb-5 sm:mb-8">What are you looking for?</h2>
+              {/* Adjusted grid for mobile - 2 columns on mobile, 5 on larger screens */}
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-6 mb-5 sm:mb-6">
                 {categories.map((category) => (
                   <div
                     key={category.name}
-                    className={`bg-white border ${selectedCategory === category.name ? 'border-primary' : 'border-gray-200'} rounded-[3px] shadow-sm hover:shadow-md transition-shadow text-center p-6 cursor-pointer hover:border-primary`}
+                    className={`bg-white border ${selectedCategory === category.name ? 'border-primary' : 'border-gray-200'} rounded-[3px] shadow-sm hover:shadow-md transition-shadow text-center p-3 sm:p-6 cursor-pointer hover:border-primary`}
                     onClick={() => setSelectedCategory(category.name === selectedCategory ? '' : category.name)}
                   >
-                    <div className="flex justify-center mb-4">
+                    <div className="flex justify-center mb-2 sm:mb-4">
                       {React.createElement(category.icon, { 
-                        size: 48, 
+                        size: 36, 
                         stroke: "#0054da", 
                         strokeWidth: 1.5 
                       })}
                     </div>
-                    <h3 className="font-medium">{category.name}</h3>
+                    <h3 className="font-medium text-sm sm:text-base">{category.name}</h3>
                   </div>
                 ))}
               </div>
 
               {selectedCategory && (
-                <div className="mt-8">
-                  <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <div className="mt-5 sm:mt-8">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
                     <div>
                       <select 
-                        className="w-full px-4 py-3 border border-gray-200 rounded-[3px] focus:outline-none focus:border-primary bg-white"
+                        className="w-full px-3 py-3 border border-gray-200 rounded-[3px] focus:outline-none focus:border-primary bg-white"
                         value={selectedMake}
                         onChange={(event) => setSelectedMake(event.target.value)}
                       >
@@ -175,7 +176,7 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
                     </div>
                     <div>
                       <select 
-                        className="w-full px-4 py-3 border border-gray-200 rounded-[3px] focus:outline-none focus:border-primary bg-white"
+                        className="w-full px-3 py-3 border border-gray-200 rounded-[3px] focus:outline-none focus:border-primary bg-white"
                       >
                         <option>All models</option>
                         {/* Models would be populated based on make */}
@@ -183,7 +184,7 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
                     </div>
                     <div>
                       <select 
-                        className="w-full px-4 py-3 border border-gray-200 rounded-[3px] focus:outline-none focus:border-primary bg-white"
+                        className="w-full px-3 py-3 border border-gray-200 rounded-[3px] focus:outline-none focus:border-primary bg-white"
                         value={selectedPrice}
                         onChange={(event) => setSelectedPrice(event.target.value)}
                       >
@@ -209,31 +210,30 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
             </div>
           ) : (
             <div>
-              <h2 className="text-2xl font-bold mb-8">What are you selling?</h2>
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+              <h2 className="text-xl sm:text-2xl font-bold mb-5 sm:mb-8">What are you selling?</h2>
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-6">
                 {categories.map((category) => (
                   <div
                     key={category.name}
-                    className={`bg-white border ${selectedCategory === category.name ? 'border-primary' : 'border-gray-200'} rounded-[3px] shadow-sm hover:shadow-md transition-shadow text-center p-6 cursor-pointer hover:border-primary`}
+                    className={`bg-white border ${selectedCategory === category.name ? 'border-primary' : 'border-gray-200'} rounded-[3px] shadow-sm hover:shadow-md transition-shadow text-center p-3 sm:p-6 cursor-pointer hover:border-primary`}
                     onClick={() => setSelectedCategory(category.name === selectedCategory ? '' : category.name)}
                   >
-                    <div className="flex justify-center mb-4">
+                    <div className="flex justify-center mb-2 sm:mb-4">
                       {React.createElement(category.icon, { 
-                        size: 48, 
+                        size: 36, 
                         stroke: "#0054da", 
                         strokeWidth: 1.5 
                       })}
                     </div>
-                    <h3 className="font-medium">{category.name}</h3>
+                    <h3 className="font-medium text-sm sm:text-base">{category.name}</h3>
                   </div>
                 ))}
               </div>
               
               {selectedCategory && (
-                <div className="mt-8">
-                  <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                   
-                    <div className="col-span-2">
+                <div className="mt-5 sm:mt-8">
+                  <div className="grid grid-cols-1 gap-3 sm:gap-4">
+                    <div>
                       <button 
                         className="w-full bg-primary text-white px-6 py-3 rounded-[3px] hover:bg-primary-dark flex items-center justify-center"
                         style={{ backgroundColor: styles.primary }}
