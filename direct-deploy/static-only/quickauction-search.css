@@ -529,21 +529,21 @@ video {
 .z-50 {
   z-index: 50;
 }
-.col-span-2 {
-  grid-column: span 2 / span 2;
-}
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
 }
-.-mt-8 {
-  margin-top: -2rem;
+.-mt-6 {
+  margin-top: -1.5rem;
 }
 .mb-12 {
   margin-bottom: 3rem;
 }
 .mb-2 {
   margin-bottom: 0.5rem;
+}
+.mb-3 {
+  margin-bottom: 0.75rem;
 }
 .mb-4 {
   margin-bottom: 1rem;
@@ -577,6 +577,9 @@ video {
 }
 .mt-4 {
   margin-top: 1rem;
+}
+.mt-5 {
+  margin-top: 1.25rem;
 }
 .mt-6 {
   margin-top: 1.5rem;
@@ -680,6 +683,9 @@ video {
 }
 .gap-2 {
   gap: 0.5rem;
+}
+.gap-3 {
+  gap: 0.75rem;
 }
 .gap-4 {
   gap: 1rem;
@@ -806,15 +812,17 @@ video {
   -o-object-fit: cover;
      object-fit: cover;
 }
+.p-3 {
+  padding: 0.75rem;
+}
+.p-4 {
+  padding: 1rem;
+}
 .p-6 {
   padding: 1.5rem;
 }
 .p-8 {
   padding: 2rem;
-}
-.px-12 {
-  padding-left: 3rem;
-  padding-right: 3rem;
 }
 .px-2 {
   padding-left: 0.5rem;
@@ -835,6 +843,10 @@ video {
 .py-1 {
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
+}
+.py-10 {
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
 }
 .py-12 {
   padding-top: 3rem;
@@ -1049,9 +1061,92 @@ body {
 
 @media (min-width: 640px) {
 
+  .sm\:-mt-8 {
+    margin-top: -2rem;
+  }
+
+  .sm\:mb-4 {
+    margin-bottom: 1rem;
+  }
+
+  .sm\:mb-5 {
+    margin-bottom: 1.25rem;
+  }
+
+  .sm\:mb-6 {
+    margin-bottom: 1.5rem;
+  }
+
+  .sm\:mb-8 {
+    margin-bottom: 2rem;
+  }
+
+  .sm\:mt-8 {
+    margin-top: 2rem;
+  }
+
+  .sm\:flex-none {
+    flex: none;
+  }
+
+  .sm\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .sm\:grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .sm\:gap-4 {
+    gap: 1rem;
+  }
+
+  .sm\:gap-6 {
+    gap: 1.5rem;
+  }
+
+  .sm\:p-6 {
+    padding: 1.5rem;
+  }
+
+  .sm\:px-12 {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+
+  .sm\:px-4 {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
   .sm\:px-6 {
     padding-left: 1.5rem;
     padding-right: 1.5rem;
+  }
+
+  .sm\:py-16 {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+
+  .sm\:text-2xl {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+
+  .sm\:text-5xl {
+    font-size: 3rem;
+    line-height: 1;
+  }
+
+  .sm\:text-base {
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+
+  .sm\:text-xl {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
   }
 }
 
