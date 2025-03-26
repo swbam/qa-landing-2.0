@@ -38,34 +38,34 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
 
   const categories = [
     { 
-      name: 'Cars', 
+      name: 'Automobile', 
       icon: Car,
       categories: automobileCategories, 
       makes: automobileMakes 
     },
     { 
-      name: 'Trucks', 
-      icon: Truck,
-      categories: automobileCategories, 
-      makes: automobileMakes 
+      name: 'Motorcycle', 
+      icon: Bike,
+      categories: motorcycleCategories, 
+      makes: motorcycleMakes 
     },
     { 
-      name: 'SUVs', 
-      icon: Car,
-      categories: automobileCategories, 
-      makes: automobileMakes 
-    },
-    { 
-      name: 'Boats', 
+      name: 'Watercraft', 
       icon: Sailboat,
       categories: boatCategories, 
       makes: boatMakes 
     },
     { 
-      name: 'Motorcycles', 
-      icon: Bike,
-      categories: motorcycleCategories, 
-      makes: motorcycleMakes 
+      name: 'Heavy Equipment', 
+      icon: Tractor,
+      categories: heavyEquipmentCategories, 
+      makes: heavyEquipmentMakes 
+    },
+    { 
+      name: 'Miscellaneous', 
+      icon: Package,
+      categories: miscCategories, 
+      makes: miscMakes 
     }
   ];
 
@@ -128,7 +128,7 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
               Buy
             </button>
             <button 
-              onClick={() => setActiveTab('Selle')}
+              onClick={() => setActiveTab('Sell')}
               className={`flex-1 sm:flex-none sm:px-12 py-3 text-center font-medium ${activeTab === 'Sell' ? 'bg-primary text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'} rounded-r-lg`}
               style={{ backgroundColor: activeTab === 'Sell' ? styles.primary : '' }}
             >
