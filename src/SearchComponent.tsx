@@ -99,7 +99,7 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
     <div className="quickauction-component-wrapper w-full">
       {/* Hero section with background image - taller for better appearance */}
       <div 
-        className="w-full pt-14 pb-64 sm:pt-20 sm:pb-64 md:pt-24 md:pb-64 bg-cover bg-center relative flex items-center" 
+        className="w-full pt-14 pb-96 sm:pt-20 sm:pb-96 md:pt-24 md:pb-96 bg-cover bg-center relative" 
         style={{ 
           backgroundImage: `url(${backgroundImage})`,
           backgroundSize: 'cover',
@@ -113,8 +113,8 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
           <h1 className="text-4xl sm:text-5xl font-bold mb-6">Quick Listing. Competitive Bidding. Fast Results.</h1>
         </div>
       
-        {/* Search component card - positioned halfway below the background image */}
-        <div className="w-full max-w-5xl mx-auto px-3 sm:px-4 absolute left-0 right-0 -bottom-32">
+        {/* Search component card - positioned halfway within the background image */}
+        <div className="w-full max-w-5xl mx-auto px-3 sm:px-4 absolute left-0 right-0 top-1/2">
           <div className="bg-white rounded-lg shadow-lg p-4 sm:p-6">
             {/* Tabs - full width on mobile */}
             <div className="flex mb-5 sm:mb-6 justify-center">
@@ -249,12 +249,10 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
             )}
           </div>
         </div>
-      </div>
-      
-      {/* Subheadline placed below the search box */}
-      <div className="w-full pt-40 pb-8 bg-gray-50">
-        <div className="max-w-5xl mx-auto px-3 sm:px-4 text-center">
-          <p className="text-lg sm:text-xl text-gray-700">From cars to watercraft, motorcycles to miscellaneous items—connect with motivated buyers and sellers for competitive bidding in minutes.</p>
+        
+        {/* Subheadline placed within the background image, below the search box */}
+        <div className="w-full max-w-5xl mx-auto px-3 sm:px-4 absolute left-0 right-0 bottom-10 text-center text-white">
+          <p className="text-lg sm:text-xl">From cars to watercraft, motorcycles to miscellaneous items—connect with motivated buyers and sellers for competitive bidding in minutes.</p>
         </div>
       </div>
     </div>
