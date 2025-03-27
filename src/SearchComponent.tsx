@@ -259,10 +259,12 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
             )}
           </div>
         </div>
-        
-        {/* Subheadline placed within the background image, below the search box with more spacing */}
-        <div className="w-full mx-auto px-3 sm:px-4 absolute left-0 right-0 bottom-16 text-center text-white">
-          <p className="max-w-lg mx-auto text-lg sm:text-xl leading-relaxed drop-shadow-md mt-12">From cars to watercraft, motorcycles to miscellaneous items—connect with motivated buyers and sellers for competitive bidding in minutes.</p>
+      </div>
+      
+      {/* Subheadline moved outside the hero section to prevent being hidden */}
+      <div className="w-full bg-gray-800 py-8">
+        <div className="max-w-lg mx-auto px-3 sm:px-4 text-center text-white">
+          <p className="text-lg sm:text-xl leading-relaxed">From cars to watercraft, motorcycles to miscellaneous items—connect with motivated buyers and sellers for competitive bidding in minutes.</p>
         </div>
       </div>
     </div>
