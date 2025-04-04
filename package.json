@@ -7,6 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "build:webflow": "webpack --mode production",
+    "build:webflow:watch": "webpack --mode development --watch",
     "lint": "eslint .",
     "preview": "vite preview",
     "deploy": "npm run build && npm run build:webflow && vercel --prod",
