@@ -90,7 +90,7 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
             href="https://app.quickauction.com/seller/add"
             target="_blank"
             rel="noopener noreferrer"
-            className="w-full sm:w-auto px-16 md:px-24 py-4 sm:py-5 text-center font-semibold text-lg sm:text-xl bg-primary text-white rounded-lg hover:bg-primary-dark transition-all duration-200 shadow-lg hover:shadow-xl" // Increased width (px)
+            className="w-full sm:w-auto px-16 md:px-24 py-4 sm:py-5 text-center font-semibold text-xl bg-primary text-white rounded-lg hover:bg-primary-dark transition-all duration-200 shadow-lg hover:shadow-xl" // Increased mobile font size back to text-xl
             style={{ backgroundColor: styles.primary }}
             onMouseOver={(e) => e.currentTarget.style.backgroundColor = styles.primaryDark}
             onMouseOut={(e) => e.currentTarget.style.backgroundColor = styles.primary}
@@ -106,7 +106,7 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
             href="https://app.quickauction.com/login"
             target="_blank"
             rel="noopener noreferrer"
-            className="w-full sm:w-auto px-16 md:px-24 py-4 sm:py-5 text-center font-semibold text-lg sm:text-xl bg-primary text-white rounded-lg hover:bg-primary-dark transition-all duration-200 shadow-lg hover:shadow-xl" // Increased width (px)
+            className="w-full sm:w-auto px-16 md:px-24 py-4 sm:py-5 text-center font-semibold text-xl bg-primary text-white rounded-lg hover:bg-primary-dark transition-all duration-200 shadow-lg hover:shadow-xl" // Increased mobile font size back to text-xl
             style={{ backgroundColor: styles.primary }}
             onMouseOver={(e) => e.currentTarget.style.backgroundColor = styles.primaryDark}
             onMouseOut={(e) => e.currentTarget.style.backgroundColor = styles.primary}
@@ -139,7 +139,7 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {mockFeaturedAuctions.map((auction) => (
           <div key={auction.id} className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow cursor-pointer group">
-            <div className="relative aspect-[4/3]">
+            <div className="relative aspect-video"> {/* Changed aspect ratio to make image shorter */}
               <img
                 src={auction.imageUrl}
                 alt={auction.title}
@@ -195,7 +195,7 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
 
           {/* Headline - Increased bottom margin */}
           <div className="max-w-5xl mx-auto px-3 sm:px-4 text-center text-white relative z-10 flex flex-col justify-center py-2 sm:py-4 mt-2 sm:mt-4 mb-10 md:mb-12">
-            <h1 className="text-4xl sm:text-4xl md:text-5xl lg:text-6xl font-bold drop-shadow-lg">Quick Listing.<br />Competitive Bidding.<br />Fast Results.</h1> {/* Increased base font size */}
+            <h1 className="text-5xl sm:text-4xl md:text-5xl lg:text-6xl font-bold drop-shadow-lg">Quick Listing.<br />Competitive Bidding.<br />Fast Results.</h1> {/* Increased base (mobile) font size */}
           </div>
 
           {/* Button container - No background, adjusted padding/margins */}
