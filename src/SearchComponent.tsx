@@ -95,9 +95,9 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
             onMouseOver={(e) => e.currentTarget.style.backgroundColor = styles.primaryDark}
             onMouseOut={(e) => e.currentTarget.style.backgroundColor = styles.primary}
           >
-            Sell
+            List & Earn
           </a>
-          <p className="text-xs text-gray-600 mt-2">List today for a low $20 fee!</p>
+          <p className="text-xs text-gray-600 mt-2">Quick listing, real buyers, just $20 flat fee</p>
         </div>
 
         {/* Buy Button Group */}
@@ -111,9 +111,9 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
             onMouseOver={(e) => e.currentTarget.style.backgroundColor = styles.primaryDark}
             onMouseOut={(e) => e.currentTarget.style.backgroundColor = styles.primary}
           >
-            Buy
+            Discover & Bid
           </a>
-           <p className="text-xs text-gray-600 mt-2">Sign up free & start bidding today!</p>
+           <p className="text-xs text-gray-600 mt-2">Free signup, thousands of vehicles & equipment</p>
         </div>
       </div>
       {/* Removed category icons and search form elements as per request */}
