@@ -82,29 +82,39 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
     <>
       {/* Links - full width on mobile */}
       {/* Buttons stack vertically on mobile, row on larger screens - Removed top margin as parent has padding now */}
-      <div className="flex flex-col sm:flex-row justify-center items-center">
-        <a
-          href="https://app.quickauction.com/seller/add"
-          target="_blank" // Optional: Open in new tab
-          rel="noopener noreferrer" // Security best practice for target="_blank"
-          className="w-full sm:w-auto px-10 sm:px-16 md:px-20 py-4 sm:py-5 text-center font-semibold text-lg sm:text-xl bg-primary text-white rounded-lg hover:bg-primary-dark transition-all duration-200 shadow-lg hover:shadow-xl mb-3 sm:mb-0 sm:mr-3" // Adjusted mobile padding/font size
-          style={{ backgroundColor: styles.primary }}
-          onMouseOver={(e) => e.currentTarget.style.backgroundColor = styles.primaryDark}
-          onMouseOut={(e) => e.currentTarget.style.backgroundColor = styles.primary}
-        >
-          Sell
-        </a>
-        <a
-          href="https://app.quickauction.com/login"
-          target="_blank" // Optional: Open in new tab
-          rel="noopener noreferrer" // Security best practice for target="_blank"
-          className="w-full sm:w-auto px-10 sm:px-16 md:px-20 py-4 sm:py-5 text-center font-semibold text-lg sm:text-xl bg-primary text-white rounded-lg hover:bg-primary-dark transition-all duration-200 shadow-lg hover:shadow-xl mt-3 sm:mt-0 sm:ml-3" // Adjusted mobile padding/font size
-          style={{ backgroundColor: styles.primary }}
-          onMouseOver={(e) => e.currentTarget.style.backgroundColor = styles.primaryDark}
-          onMouseOut={(e) => e.currentTarget.style.backgroundColor = styles.primary}
-        >
-          Buy
-        </a>
+      {/* Button groups stack vertically on mobile, row on larger screens */}
+      <div className="flex flex-col sm:flex-row justify-center items-start sm:items-center space-y-4 sm:space-y-0 sm:space-x-6">
+        {/* Sell Button Group */}
+        <div className="flex flex-col items-center w-full sm:w-auto">
+          <a
+            href="https://app.quickauction.com/seller/add"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full sm:w-auto px-16 md:px-24 py-4 sm:py-5 text-center font-semibold text-lg sm:text-xl bg-primary text-white rounded-lg hover:bg-primary-dark transition-all duration-200 shadow-lg hover:shadow-xl" // Increased width (px)
+            style={{ backgroundColor: styles.primary }}
+            onMouseOver={(e) => e.currentTarget.style.backgroundColor = styles.primaryDark}
+            onMouseOut={(e) => e.currentTarget.style.backgroundColor = styles.primary}
+          >
+            Sell Your Vehicle
+          </a>
+          <p className="text-xs text-gray-600 mt-2">List today for a low $20 fee!</p>
+        </div>
+
+        {/* Buy Button Group */}
+        <div className="flex flex-col items-center w-full sm:w-auto">
+          <a
+            href="https://app.quickauction.com/login"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full sm:w-auto px-16 md:px-24 py-4 sm:py-5 text-center font-semibold text-lg sm:text-xl bg-primary text-white rounded-lg hover:bg-primary-dark transition-all duration-200 shadow-lg hover:shadow-xl" // Increased width (px)
+            style={{ backgroundColor: styles.primary }}
+            onMouseOver={(e) => e.currentTarget.style.backgroundColor = styles.primaryDark}
+            onMouseOut={(e) => e.currentTarget.style.backgroundColor = styles.primary}
+          >
+            Find Your Next Vehicle
+          </a>
+           <p className="text-xs text-gray-600 mt-2">Sign up free & start bidding today!</p>
+        </div>
       </div>
       {/* Removed category icons and search form elements as per request */}
     </>
