@@ -1,6 +1,6 @@
 import React from 'react'; // Removed unused useState, useEffect
 import { Filter, ArrowUpDown } from 'lucide-react'; // Removed unused icons (Car, Sailboat, etc.)
-import backgroundImage from './QA-Zendesk-Header-buyer.jpg'; // Corrected image path
+import backgroundImage from './qa-header-bg.png'; // Updated background image
 
 interface FeaturedAuction {
   id: string;
