@@ -1,5 +1,6 @@
 import React from 'react'; // Removed unused useState, useEffect
-import { Filter, ArrowUpDown } from 'lucide-react'; // Removed unused icons (Car, Sailboat, etc.)
+// Import icons for new sections
+import { FileText, BadgeDollarSign, Truck as DeliveryTruck, CheckCircle, Clock, Users, ShieldCheck, Filter, ArrowUpDown } from 'lucide-react'; // Removed unused ChevronRight, HelpCircle
 import backgroundImage from './qa-header-bg.png'; // Updated background image
 
 interface FeaturedAuction {
@@ -53,23 +54,226 @@ const mockFeaturedAuctions: FeaturedAuction[] = [
   }
 ];
 
+// --- New Section Components ---
+
+// How It Works Section
+const HowItWorksSection: React.FC<{ primaryColor?: string }> = ({ primaryColor = '#0054da' }) => (
+  <div className="bg-gray-50 py-16 sm:py-24">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 className="text-base font-semibold text-primary tracking-wide uppercase" style={{ color: primaryColor }}>How It Works</h2>
+      <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Sell Your Vehicle in 3 Simple Steps</p>
+      <div className="mt-12 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-x-8">
+        {/* Step 1 */}
+        <div className="flex flex-col items-center">
+          <div className="flex-shrink-0">
+            <div className="flex items-center justify-center h-12 w-12 rounded-md bg-primary text-white" style={{ backgroundColor: primaryColor }}>
+              <FileText className="h-6 w-6" aria-hidden="true" />
+            </div>
+          </div>
+          <div className="mt-4">
+            <h3 className="text-lg font-medium text-gray-900">1. Submit Details</h3>
+            <p className="mt-2 text-base text-gray-500">
+              Enter your vehicle's year, make, model, condition, and upload a few quality photos. It only takes minutes.
+            </p>
+          </div>
+        </div>
+        {/* Step 2 */}
+        <div className="flex flex-col items-center">
+          <div className="flex-shrink-0">
+            <div className="flex items-center justify-center h-12 w-12 rounded-md bg-primary text-white" style={{ backgroundColor: primaryColor }}>
+              <BadgeDollarSign className="h-6 w-6" aria-hidden="true" />
+            </div>
+          </div>
+          <div className="mt-4">
+            <h3 className="text-lg font-medium text-gray-900">2. Get Your Offer Fast</h3>
+            <p className="mt-2 text-base text-gray-500">
+              Our network provides competitive offers quickly, often within 30 minutes. Accept the best one for you.
+            </p>
+          </div>
+        </div>
+        {/* Step 3 */}
+        <div className="flex flex-col items-center">
+          <div className="flex-shrink-0">
+            <div className="flex items-center justify-center h-12 w-12 rounded-md bg-primary text-white" style={{ backgroundColor: primaryColor }}>
+              <DeliveryTruck className="h-6 w-6" aria-hidden="true" />
+            </div>
+          </div>
+          <div className="mt-4">
+            <h3 className="text-lg font-medium text-gray-900">3. Arrange Pickup & Payment</h3>
+            <p className="mt-2 text-base text-gray-500">
+              Coordinate pickup with the buyer within 24-hours. Receive prompt, secure payment upon vehicle collection.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
+// CTA Banner Section
+const CTABannerSection: React.FC<{ primaryColor?: string }> = ({ primaryColor = '#0054da' }) => ( // Removed unused primaryDarkColor prop
+  <div className="bg-primary" style={{ backgroundColor: primaryColor }}>
+    <div className="max-w-4xl mx-auto text-center py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
+      <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+        <span className="block">Turn Your Vehicle into Cash Quickly.</span>
+      </h2>
+      <p className="mt-4 text-lg leading-6 text-indigo-100">
+        Experience lightning-fast sales with our guaranteed quick listing process. No waiting, no hassle.
+      </p>
+      <div className="mt-8 flex justify-center">
+        <div className="inline-flex rounded-md shadow">
+          <a
+            href="https://app.quickauction.com/seller/add" // Link to seller page
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-primary bg-white hover:bg-gray-50"
+            style={{ color: primaryColor }}
+          >
+            List Your Vehicle Now
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
+// Why Choose Us Section
+const WhyChooseSection: React.FC<{ primaryColor?: string, primaryDarkColor?: string }> = ({ primaryColor = '#0054da', primaryDarkColor = '#0049bb' }) => (
+  <div className="bg-white py-16 sm:py-24">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="lg:grid lg:grid-cols-2 lg:gap-16 lg:items-center">
+        <div>
+          <h2 className="text-base font-semibold text-primary tracking-wide uppercase" style={{ color: primaryColor }}>Why Choose QuickAuction?</h2>
+          <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">The Unmatched Advantage: Sell Smarter, Faster</p>
+          <p className="mt-4 text-lg text-gray-500">
+            Leverage our extensive network and streamlined process to get the best value for your vehicle with minimal effort.
+          </p>
+          <dl className="mt-10 space-y-6">
+            {[
+              { icon: Users, title: 'Massive Buyer Network', description: 'Access qualified buyers nationwide, ensuring competitive bids.' },
+              { icon: Clock, title: 'Lightning-Fast Process', description: 'From listing to offer often in just 30 minutes.' },
+              { icon: ShieldCheck, title: 'Secure Transactions', description: 'Vetted buyers and secure payment processes for peace of mind.' },
+              { icon: CheckCircle, title: 'Flexible Options', description: 'We handle all types, including used, damaged, or wrecked vehicles.' },
+              { icon: BadgeDollarSign, title: 'Low, Flat Fee', description: 'Our transparent $20 seller fee means you keep more of your sale.' },
+            ].map((item) => (
+              <div key={item.title} className="relative flex items-start">
+                <dt className="flex-shrink-0">
+                  <div className="flex items-center justify-center h-10 w-10 rounded-md bg-primary text-white" style={{ backgroundColor: primaryColor }}>
+                    <item.icon className="h-6 w-6" aria-hidden="true" />
+                  </div>
+                </dt>
+                <dd className="ml-4">
+                  <p className="text-lg leading-6 font-medium text-gray-900">{item.title}</p>
+                  <p className="mt-1 text-base text-gray-500">{item.description}</p>
+                </dd>
+              </div>
+            ))}
+          </dl>
+           <div className="mt-10">
+             <a
+               href="https://app.quickauction.com/seller/add" // Link to seller page
+               target="_blank"
+               rel="noopener noreferrer"
+               className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary hover:bg-primary-dark"
+               style={{ backgroundColor: primaryColor }}
+               onMouseOver={(e) => e.currentTarget.style.backgroundColor = primaryDarkColor}
+               onMouseOut={(e) => e.currentTarget.style.backgroundColor = primaryColor}
+             >
+               Get Started Selling
+             </a>
+           </div>
+        </div>
+        <div className="mt-10 lg:mt-0" aria-hidden="true">
+          {/* Placeholder for image - replace src with actual image URL if available */}
+          <img
+            className="relative mx-auto rounded-lg shadow-xl"
+            width={490}
+            src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&q=80&w=600" // Example image
+            alt="Vehicle being auctioned"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
+// FAQ Section
+const FAQSection: React.FC<{ primaryColor?: string, primaryDarkColor?: string }> = ({ primaryColor = '#0054da', primaryDarkColor = '#0049bb' }) => {
+  const faqs = [
+    { question: 'How quickly can I sell my vehicle on QuickAuction?', answer: 'Offers often arrive within 30 minutes of listing! The entire process from listing to pickup coordination typically happens within 1-2 days.' },
+    { question: 'Are there any fees for sellers using QuickAuction?', answer: 'We charge a simple, flat $20 success fee only if your vehicle sells. There are no hidden costs or listing fees.' },
+    { question: 'Can I sell or buy damaged or wrecked vehicles on QuickAuction?', answer: 'Absolutely! We connect buyers and sellers for all types of vehicles, regardless of condition, including damaged, wrecked, or non-running units.' },
+    { question: 'How does the vehicle pickup process work after a sale?', answer: 'Once you accept an offer, you coordinate directly with the buyer for pickup within a 24-hour window. Payment is typically made securely upon collection.' },
+  ];
+
+  return (
+    <div className="bg-gray-50 py-16 sm:py-24">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-3xl mx-auto text-center">
+          <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Frequently Asked Questions</h2>
+          <p className="mt-4 text-lg text-gray-500">
+            Everything you need to know about listing your vehicle and completing a successful sale on QuickAuction.
+          </p>
+        </div>
+        <dl className="mt-12 space-y-6">
+          {faqs.map((faq) => (
+            <div key={faq.question} className="p-6 bg-white rounded-lg shadow-sm">
+              <dt className="text-lg font-medium text-gray-900">{faq.question}</dt>
+              <dd className="mt-2 text-base text-gray-500">{faq.answer}</dd>
+            </div>
+          ))}
+        </dl>
+        <div className="mt-10 text-center">
+           <a
+             href="#" // Link to a potential full FAQ page
+             className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary hover:bg-primary-dark"
+             style={{ backgroundColor: primaryColor }}
+             onMouseOver={(e) => e.currentTarget.style.backgroundColor = primaryDarkColor}
+             onMouseOut={(e) => e.currentTarget.style.backgroundColor = primaryColor}
+           >
+             View All FAQs
+           </a>
+         </div>
+      </div>
+    </div>
+  );
+};
+
+// Second CTA Section (Simplified)
+const SecondCTABannerSection: React.FC<{ primaryColor?: string, primaryDarkColor?: string }> = ({ primaryColor = '#0054da', primaryDarkColor = '#0049bb' }) => (
+   <div className="bg-white py-16 sm:py-24">
+     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+       <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Ready to Turn Your Vehicle into Cash?</h2>
+       <p className="mt-4 text-lg text-gray-500 max-w-2xl mx-auto">
+         Connect with vetted buyers instantly, get competitive offers within minutes. No hassles, no waiting.
+       </p>
+       <div className="mt-8">
+         <a
+           href="https://app.quickauction.com/seller/add" // Link to seller page
+           target="_blank"
+           rel="noopener noreferrer"
+           className="inline-flex items-center justify-center px-8 py-4 border border-transparent text-base font-medium rounded-md text-white bg-primary hover:bg-primary-dark"
+           style={{ backgroundColor: primaryColor }}
+           onMouseOver={(e) => e.currentTarget.style.backgroundColor = primaryDarkColor}
+           onMouseOut={(e) => e.currentTarget.style.backgroundColor = primaryColor}
+         >
+           List Your Vehicle Today
+         </a>
+       </div>
+       {/* Optional: Add image here if desired */}
+     </div>
+   </div>
+ );
+
+
+// --- Main Search Component ---
+
 const SearchComponent: React.FC<SearchComponentProps> = ({
   primaryColor = '#0054da',
   primaryDarkColor = '#0049bb',
   // layoutType = 'standard' // Removed prop
 }) => {
-  // Restore state variables needed for split/centered layouts
-  // Removed unused state variables (activeTab, selectedMake, selectedPrice, selectedCategory, availableMakes, isSearchFocused)
-
-  // Define category data structure
-  // Removed unused vehicleCategories constant
-
-  // Removed unused category/make data arrays and the 'categories' constant
-
-  // Removed unused getSubCategories function
-
-  // Restore effect needed for split/centered layouts
-  // Removed unused useEffect hook
+  // Removed unused state variables and useEffect
 
   // Dynamic styles to use custom colors
   const styles = {
@@ -77,11 +281,9 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
     primaryDark: primaryDarkColor
   };
 
-  // Simplified Search form content with only Buy/Sell links (for standard layout)
+  // Simplified Search form content with only Buy/Sell links
   const SearchFormContent = () => (
     <>
-      {/* Links - full width on mobile */}
-      {/* Buttons stack vertically on mobile, row on larger screens - Removed top margin as parent has padding now */}
       {/* Button groups stack vertically on mobile, row on larger screens */}
       <div className="flex flex-col sm:flex-row justify-center items-start sm:items-center space-y-4 sm:space-y-0 sm:space-x-6">
         {/* Sell Button Group */}
@@ -90,14 +292,14 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
             href="https://app.quickauction.com/seller/add"
             target="_blank"
             rel="noopener noreferrer"
-            className="w-full sm:w-auto px-16 md:px-24 py-4 sm:py-5 text-center font-semibold text-xl bg-primary text-white rounded-lg hover:bg-primary-dark transition-all duration-200 shadow-lg hover:shadow-xl" // Increased mobile font size back to text-xl
+            className="w-full sm:w-auto px-16 md:px-24 py-4 sm:py-5 text-center font-semibold text-xl bg-primary text-white rounded-lg hover:bg-primary-dark transition-all duration-200 shadow-lg hover:shadow-xl" // Increased width (px), Increased mobile font size back to text-xl
             style={{ backgroundColor: styles.primary }}
             onMouseOver={(e) => e.currentTarget.style.backgroundColor = styles.primaryDark}
             onMouseOut={(e) => e.currentTarget.style.backgroundColor = styles.primary}
           >
-            Sell
+            Sell Your Vehicle
           </a>
-          <p className="text-xs text-gray-600 mt-2">Quick listing, real buyers, just $20 flat fee</p>
+          <p className="text-xs text-gray-600 mt-2">List today for a low $20 fee!</p>
         </div>
 
         {/* Buy Button Group */}
@@ -106,14 +308,14 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
             href="https://app.quickauction.com/login"
             target="_blank"
             rel="noopener noreferrer"
-            className="w-full sm:w-auto px-16 md:px-24 py-4 sm:py-5 text-center font-semibold text-xl bg-primary text-white rounded-lg hover:bg-primary-dark transition-all duration-200 shadow-lg hover:shadow-xl" // Increased mobile font size back to text-xl
+            className="w-full sm:w-auto px-16 md:px-24 py-4 sm:py-5 text-center font-semibold text-xl bg-primary text-white rounded-lg hover:bg-primary-dark transition-all duration-200 shadow-lg hover:shadow-xl" // Increased width (px), Increased mobile font size back to text-xl
             style={{ backgroundColor: styles.primary }}
             onMouseOver={(e) => e.currentTarget.style.backgroundColor = styles.primaryDark}
             onMouseOut={(e) => e.currentTarget.style.backgroundColor = styles.primary}
           >
-            Buy
+            Find Your Next Vehicle
           </a>
-           <p className="text-xs text-gray-600 mt-2">Free signup, a large selection of vehicles & equipment</p>
+           <p className="text-xs text-gray-600 mt-2">Sign up free & start bidding today!</p>
         </div>
       </div>
       {/* Removed category icons and search form elements as per request */}
@@ -178,10 +380,10 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
     </div>
   );
 
-  // Always return the standard layout structure now
+  // Main component return statement
   return (
       <div className="quickauction-component-wrapper w-full">
-        {/* Hero section with background image - reduced padding for better mobile experience */}
+        {/* Hero section */}
         <div
           className="w-full pt-6 pb-12 sm:pt-10 sm:pb-20 md:pt-12 md:pb-24 bg-cover bg-center relative"
           style={{
@@ -193,19 +395,18 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
           {/* Dark overlay */}
           <div className="absolute inset-0 bg-black opacity-50"></div>
 
-          {/* Headline - Increased bottom margin */}
+          {/* Headline */}
           <div className="max-w-5xl mx-auto px-3 sm:px-4 text-center text-white relative z-10 flex flex-col justify-center py-2 sm:py-4 mt-2 sm:mt-4 mb-10 md:mb-12">
             <h1 className="text-5xl sm:text-4xl md:text-5xl lg:text-6xl font-bold drop-shadow-lg">Quick Listing.<br />Competitive Bidding.<br />Fast Results.</h1> {/* Increased base (mobile) font size */}
           </div>
 
-          {/* Button container - No background, adjusted padding/margins */}
+          {/* Button container */}
           <div className="w-full max-w-5xl mx-auto px-3 sm:px-4 md:px-6 relative z-20">
             <div className="bg-white rounded-lg shadow-xl p-4 sm:p-6 md:p-8"> {/* Added bg-white, rounded-lg, shadow, adjusted padding */}
               <SearchFormContent /> {/* Uses the simplified version */}
             </div>
 
-            {/* Subheadline placed below the search box with reduced spacing */}
-            {/* Adjusted top margin for spacing below white box */}
+            {/* Subheadline */}
             <div className="max-w-lg mx-auto mt-6 sm:mt-8 md:mt-8 text-center">
               <p className="text-white text-lg sm:text-base md:text-lg leading-relaxed drop-shadow-lg font-medium"> {/* Increased base font size */}
                 From cars to watercraft, motorcycles to miscellaneous items—connect with motivated buyers and sellers for competitive bidding in minutes.
@@ -217,11 +418,16 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
         {/* Featured Auctions Section */}
         <FeaturedAuctionsSection />
 
-        {/* Removed Third and Fourth sections */}
+        {/* --- Newly Added Sections --- */}
+        <HowItWorksSection primaryColor={primaryColor} />
+        <CTABannerSection primaryColor={primaryColor} />
+        <WhyChooseSection primaryColor={primaryColor} primaryDarkColor={primaryDarkColor} />
+        <FAQSection primaryColor={primaryColor} primaryDarkColor={primaryDarkColor} />
+        <SecondCTABannerSection primaryColor={primaryColor} primaryDarkColor={primaryDarkColor} />
+
       </div>
     );
 }; // Correctly closes the component function
 
-// Export all versions with different class names
 // Removed SplitSearchComponent and CenteredSearchComponent exports as layouts were removed
 export default SearchComponent;
