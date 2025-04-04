@@ -244,3 +244,8 @@
 .quickauction-search-component select {
   appearance: auto;
 } 
+
+
+body {
+  font-family: 'Overpass', sans-serif !important;
+}
