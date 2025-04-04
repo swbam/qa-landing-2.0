@@ -95,7 +95,7 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
             onMouseOver={(e) => e.currentTarget.style.backgroundColor = styles.primaryDark}
             onMouseOut={(e) => e.currentTarget.style.backgroundColor = styles.primary}
           >
-            Sell Your Vehicle
+            Sell
           </a>
           <p className="text-xs text-gray-600 mt-2">List today for a low $20 fee!</p>
         </div>
@@ -111,7 +111,7 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
             onMouseOver={(e) => e.currentTarget.style.backgroundColor = styles.primaryDark}
             onMouseOut={(e) => e.currentTarget.style.backgroundColor = styles.primary}
           >
-            Find Your Next Vehicle
+            Buy
           </a>
            <p className="text-xs text-gray-600 mt-2">Sign up free & start bidding today!</p>
         </div>
